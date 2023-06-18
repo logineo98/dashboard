@@ -1,0 +1,218 @@
+.not_conntected {
+    height: 100vh;
+    @include df(center, center);
+
+    .content {
+        @include h-w($h: 70%, $w: 75%);
+        @include df($ai: center);
+        overflow-y: auto;
+        box-shadow: 0 rem-calc(2) rem-calc(4) rgba(0, 0, 0, 0.1);
+        border-radius: rem-calc(15);
+
+
+        .left_part {
+            @include h-w($h: 100%, $w: 50%);
+            background: $edm-blue-color;
+            border-top-left-radius: rem-calc(16);
+            border-bottom-left-radius: rem-calc(16);
+
+            img {
+                @include image();
+                border-top-left-radius: rem-calc(15);
+                border-bottom-left-radius: rem-calc(15);
+            }
+        }
+
+        .right_part {
+            position: relative;
+            @include h-w($h: 100%, $w: 50%);
+            background: $white;
+            border-top-right-radius: rem-calc(15);
+            border-bottom-right-radius: rem-calc(15);
+            @include df(center, center);
+
+            .container {
+                width: 60%;
+
+                .logo_welcome {
+                    text-align: center;
+
+                    .logo_img_container {
+                        @include h-w(rem-calc(80), rem-calc(80));
+                        margin: auto;
+
+                        img {
+                            @include image;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    h1 {
+                        color: $edm-sa-color;
+                        font-size: rem-calc(24);
+                    }
+                }
+
+                .loading_container {
+                    @include pos-abs-t-r;
+                }
+
+                form {
+                    margin-top: rem-calc(20);
+                    text-align: center;
+
+                    .input_container {
+                        position: relative;
+                        margin-top: rem-calc(30);
+
+                        input {
+                            @include h-w(rem-calc(45), 100%);
+                            border-radius: rem-calc(8);
+                            border: rem-calc(1) solid $light;
+                            font-size: rem-calc(16);
+                            padding-left: rem-calc(15);
+                            padding-right: rem-calc(45);
+
+                            &:focus {
+                                outline: none;
+                                border: rem-calc(1) solid $sb-active;
+
+                                &~.icon {
+                                    color: $sb-active;
+                                }
+                            }
+
+                            &::placeholder {
+                                color: $edm-sa-color;
+                            }
+                        }
+
+                        .icon {
+                            @include pos-abs-t-r(rem-calc(10), rem-calc(15));
+                            font-size: rem-calc(25);
+                            color: $edm-sa-color;
+
+                            &.password {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    .back_login {
+                        @include df($ai: center, $jc: flex-end);
+                    }
+
+                    .container_choose_back {
+                        .question {
+                            margin-bottom: rem-calc(15);
+                            text-align: left;
+                        }
+
+                        .choose_container {
+                            @include df($ai: center, $jc: space-between);
+
+                            button {
+                                @include df($ai: center, $jc: center);
+                                @include h-w(rem-calc(45), 35%);
+                                margin-top: 0;
+                                border-radius: rem-calc(8);
+
+                                .icon {
+                                    font-size: rem-calc(20);
+                                }
+                            }
+                        }
+
+                        .back_forget {
+                            margin-top: rem-calc(15);
+                            @include df($ai: center, $jc: flex-end);
+
+                            span {
+                                padding: rem-calc(5);
+                                cursor: pointer;
+                                color: $edm-blue-color;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+
+                    .container_code_resend {
+                        .question {
+                            margin-bottom: rem-calc(15);
+                            text-align: left;
+                        }
+
+                        .code_container {
+                            @include df($ai: center, $jc: space-between);
+
+                            input {
+                                @include h-w(rem-calc(45), 78%);
+                                border-radius: rem-calc(8);
+                                border: rem-calc(2) solid $light;
+                                font-size: rem-calc(16);
+                                padding-left: rem-calc(15);
+                                padding-right: rem-calc(15);
+
+                                &:focus {
+                                    outline: none;
+                                    border: rem-calc(2) solid $sb-active;
+                                }
+                            }
+
+                            button {
+                                @include df($ai: center, $jc: center);
+                                @include h-w(rem-calc(45), 20%);
+                                margin-top: 0;
+                                border-radius: rem-calc(8);
+
+                                .icon {
+                                    font-size: rem-calc(20);
+                                }
+                            }
+                        }
+
+                        .code_no_valid {
+                            color: $sb-hover-color;
+                            font-size: rem-calc(14);
+                            font-style: italic;
+                            text-align: left;
+                            display: block;
+                        }
+
+                        .resend_back {
+                            margin-top: rem-calc(15);
+                            @include df($ai: center, $jc: space-between);
+
+                            span {
+                                padding: rem-calc(5);
+                                cursor: pointer;
+                                color: $edm-blue-color;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+
+                    button {
+                        margin-top: rem-calc(18);
+                        background: $edm-blue-color;
+                        color: $white;
+                        border: none;
+                        width: 50%;
+                        padding: rem-calc(10);
+                        border-radius: rem-calc(5);
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

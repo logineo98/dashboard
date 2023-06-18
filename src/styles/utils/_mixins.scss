@@ -1,0 +1,165 @@
+@mixin df($ai: flex-start, $jc: flex-start) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+@mixin h100-w100 {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin h-w($h: auto, $w: auto) {
+    height: $h;
+    width: $w;
+}
+
+@mixin image($of: cover) {
+    @include h100-w100;
+    object-fit: $of;
+}
+
+// position fixed
+@mixin pos-fix-t-l($t: 0, $l: 0) {
+    position: fixed;
+
+    top: $t;
+    left: $l;
+}
+
+// position absolute
+@mixin pos-abs-t-l($t: 0, $l: 0) {
+    position: absolute;
+
+    top: $t;
+    left: $l;
+}
+
+@mixin pos-abs-t-r($t: 0, $r: 0) {
+    position: absolute;
+
+    top: $t;
+    right: $r;
+}
+
+@mixin pos-abs-b-l($b: 0, $l: 0) {
+    position: absolute;
+
+    bottom: $b;
+    left: $l;
+}
+
+@mixin pos-abs-b-r($b: 0, $r: 0) {
+    position: absolute;
+
+    bottom: $b;
+    right: $r;
+}
+
+// position sticky
+@mixin pos-sticky-t-l($t: 0, $l: 0) {
+    position: sticky;
+
+    top: $t;
+    left: $l;
+}
+
+@mixin pos-sticky-t-r($t: 0, $r: 0) {
+    position: sticky;
+
+    top: $t;
+    right: $r;
+}
+
+@mixin pos-sticky-b-l($b: 0, $l: 0) {
+    position: sticky;
+
+    bottom: $b;
+    left: $l;
+}
+
+@mixin pos-sticky-b-r($b: 0, $r: 0) {
+    position: sticky;
+
+    bottom: $b;
+    right: $r;
+}
+
+@mixin sidebar-hover {
+    color: $sb-hover-color;
+    transition: all 0.3s ease;
+}
+
+// pour le scrollbar
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: rem-calc(5);
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-1 ;
+        border-radius: rem-calc(5);
+    }
+}
+
+// pour la croix de input search
+@mixin search-croix($fz: 0, $pd: rem-calc(2)) {
+
+    //  Sélecteur pour styliser la croix 
+    &::-webkit-search-cancel-button {
+        cursor: pointer;
+        font-size: $fz;
+
+        &:hover {
+            padding: $pd;
+        }
+    }
+}
+
+
+@mixin bouton($br: 3, $color: $edm-blue-color, $color-hover: $sb-active, $background-hover: $background-color) {
+    height: 100%;
+    background: none;
+    outline: none;
+    border: rem-calc(1) solid $light;
+    border-radius: rem-calc($br);
+    color: $color;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-hover;
+        background: $background-hover;
+        border-color: $sb-active;
+        transition: all 0.5s ease;
+    }
+}
+
+@mixin input-select($fz: 15, $br: 5) {
+    background: $white;
+    height: 100%;
+    border: rem-calc(1) solid $light;
+    border-radius: rem-calc($br);
+    padding: 0 rem-calc(10) 0;
+    font-size: rem-calc($fz);
+    margin-right: rem-calc(10);
+    appearance: none;
+
+    &:focus {
+        border: none;
+        outline: rem-calc(1) solid $sb-active;
+        color: $sb-active;
+    }
+
+    &:hover {
+        color: $sb-active;
+    }
+
+    &~button {
+        @include bouton;
+        padding: 0 rem-calc(10);
+    }
+}

@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "font-1";
+  src: url(./assets/fonts/Ubuntu-Light.ttf);
+}
+
+@font-face {
+  font-family: "font-2";
+  src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+  font-family: "font-3";
+  src: url(./assets/fonts/Ubuntu-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-2;
+  // user-select: none;
+
+  &::selection {
+    background: $color-1;
+    color: $white;
+  }
+}
+
+body,
+html {
+  font-size: $base-font-size;
+  background: $background-color;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

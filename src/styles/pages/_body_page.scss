@@ -1,0 +1,15 @@
+.body_page {
+    @include df;
+
+    .right_part {
+        width: calc(100% - rem-calc(200));
+        height: 100vh;
+
+        @import './right_part_header';
+
+        .right_body {
+            height: calc(100vh - rem-calc(60));
+            padding: rem-calc(10);
+        }
+    }
+}
