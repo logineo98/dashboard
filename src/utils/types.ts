@@ -13,6 +13,40 @@ export type PIN_TYPE = {
     password?: string
 }
 
+export type ADD_EDIT_TOWN_TYPE = {
+    id?: string
+    name: string
+}
+
+export type ADD_EDIT_ADMIN_TYPE = {
+    id?: string
+    name: string
+    username: string
+    email: string
+    phone: string
+    password?: string
+    password_confirm?: string
+}
+
+export type VALIDATION_DEVIS_TYPE = {
+    amount: number | string
+    motif: string
+    status: string
+}
+
+export type ADD_EDIT_NEWS_INFORMATION_TYPE = {
+    id?: string
+    title: string
+    content: string
+    image: string | File
+}
+
+export type ListeType<T, K> = {
+    title?: string
+    datas: T[]
+    columns: K[]
+}
+
 export type COLUMN_DATA_TABLE_TYPE = {
     id: string
     username: string
@@ -39,7 +73,7 @@ export type COLUMN_DATA_TABLE_TYPE = {
     typeCompteur: string
     typeDemande: string
     usage: string
-    // ville: ADD_EDIT_TOWN_TYPE
+    ville: ADD_EDIT_TOWN_TYPE
     commune: string
     quartier: string
     rue: string

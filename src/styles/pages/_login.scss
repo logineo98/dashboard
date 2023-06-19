@@ -31,6 +31,12 @@
             border-bottom-right-radius: rem-calc(15);
             @include df(center, center);
 
+            .home {
+                @include pos-abs-t-l(rem-calc(10), rem-calc(10));
+                font-size: rem-calc(30);
+                color: $edm-blue-color;
+            }
+
             .container {
                 width: 60%;
 
@@ -98,6 +104,22 @@
                         }
                     }
 
+                    .remember_forget,
+                    .back_login {
+                        margin-top: rem-calc(15);
+                        @include df($ai: center, $jc: space-between);
+
+                        a {
+                            color: $edm-blue-color;
+                            font-size: rem-calc(14);
+
+                            &:hover {
+                                color: $sb-hover-color;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
                     .back_login {
                         @include df($ai: center, $jc: flex-end);
                     }
@@ -113,7 +135,7 @@
 
                             button {
                                 @include df($ai: center, $jc: center);
-                                @include h-w(rem-calc(45), 35%);
+                                @include h-w(rem-calc(45), 20%);
                                 margin-top: 0;
                                 border-radius: rem-calc(8);
 
@@ -195,6 +217,89 @@
                                     text-decoration: underline;
                                 }
                             }
+                        }
+                    }
+
+                    .container_write_password {
+                        .question {
+                            margin-bottom: rem-calc(15);
+                            text-align: left;
+                        }
+
+                        .password_send_container {
+                            @include df($ai: center, $jc: space-between);
+
+                            .password_container {
+                                position: relative;
+                                width: 83%;
+
+                                input {
+                                    @include h-w(rem-calc(45), 100%);
+                                    border-radius: rem-calc(8);
+                                    border: rem-calc(2) solid $light;
+                                    font-size: rem-calc(16);
+                                    padding-left: rem-calc(15);
+                                    padding-right: rem-calc(44);
+
+                                    &:focus {
+                                        outline: none;
+                                        border: rem-calc(2) solid $sb-active;
+
+                                        &~.icon {
+                                            color: $sb-active;
+                                        }
+                                    }
+                                }
+
+                                .icon {
+                                    @include pos-abs-t-r(rem-calc(10), rem-calc(15));
+                                    font-size: rem-calc(25);
+                                    color: $edm-sa-color;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            button {
+                                @include df($ai: center, $jc: center);
+                                @include h-w(rem-calc(45), 15%);
+                                margin-top: 0;
+                                border-radius: rem-calc(8);
+
+                                .icon {
+                                    font-size: rem-calc(20);
+                                }
+                            }
+                        }
+
+                        .password_error {
+                            color: $sb-hover-color;
+                            font-size: rem-calc(14);
+                            font-style: italic;
+                            text-align: left;
+                            display: block;
+                        }
+
+                        .code_back {
+                            margin-top: rem-calc(15);
+                            @include df($ai: center, $jc: flex-end);
+
+                            span {
+                                padding: rem-calc(5);
+                                cursor: pointer;
+                                color: $edm-blue-color;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+
+                    .container_success {
+                        .msg_success {
+                            color: $success-color;
+                            font-size: rem-calc(16);
+                            text-align: justify;
                         }
                     }
 

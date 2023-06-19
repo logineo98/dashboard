@@ -1,14 +1,16 @@
 .body_page {
-    @include df;
+    @import './header';
+    height: 100vh;
 
-    .right_part {
-        width: calc(100% - rem-calc(200));
-        height: 100vh;
+    .body_container {
+        @include df;
+        height: calc(100vh - rem-calc(60));
 
-        @import './right_part_header';
+        @import '../components/sidebar/sidebar';
 
         .right_body {
             height: calc(100vh - rem-calc(60));
+            width: calc(100% - rem-calc(200));
             padding: rem-calc(10);
         }
     }

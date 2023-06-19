@@ -1,0 +1,20 @@
+.liste {
+    background: $white;
+    margin: rem-calc(20) 0;
+    padding: rem-calc(10) rem-calc(20) rem-calc(30);
+
+    .jDnmYN {
+        overflow: auto;
+        @include scrollbar;
+    }
+}
+
+span.column {
+    display: inline-block;
+    cursor: pointer;
+    background: rgba($color: $black, $alpha: 0.05);
+    padding: rem-calc(5);
+    border-radius: rem-calc(4);
+}
+
+@import "./no_filtered_filtered_search";

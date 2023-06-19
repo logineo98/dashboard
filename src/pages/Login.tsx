@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom'
 // importation des icons
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import Loading from '../components/loading/Loading'
 
 const Login: PAGE_COMPONENT_TYPE = () => {
     const data = { username: '', password: '' }
@@ -79,7 +78,7 @@ const Login: PAGE_COMPONENT_TYPE = () => {
                     <Link to='/forget-password' onClick={() => { }}>Mot de passe oublié</Link>
                 </div>
 
-                <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'no-drop' : 'pointer' }}  >Login</button>
+                <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }}>Login</button>
             </form>
         </LoginContainer>
     )

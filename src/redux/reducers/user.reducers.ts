@@ -1,4 +1,4 @@
-import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, PUT_LOADING_USER_FALSE, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN } from "../constants"
+import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN } from "../constants"
 
 
 const initialState = {
@@ -6,7 +6,6 @@ const initialState = {
     admin: null,
     adminForget: null,
     idForget: null,
-    usernamePhoneForget: null,
     chooseForget: null,
     codeForget: null,
     pinForget: null,
@@ -24,9 +23,6 @@ const userReducer = (state = initialState, action: { type: string, payload: any 
         case LOADING_USER:
             return { ...state, loadingUser: true }
 
-        case PUT_LOADING_USER_FALSE:
-            return { ...state, loadingUser: false }
-
         case ERROR_USER:
             return { ...state, error: payload, loadingUser: false }
 
@@ -41,7 +37,6 @@ const userReducer = (state = initialState, action: { type: string, payload: any 
 
         case GET_ADMIN_BY_USERNAME_OR_PHONE:
             return { ...state, adminForget: payload.data, loadingUser: false, error: null }
-
 
         case SEND_PIN:
             return { ...state, pinForget: payload.pin, chooseForget: payload.choose, loadingUser: false, error: null }

@@ -1,0 +1,19 @@
+.titre_ajout {
+    @include h-w($h: rem-calc(40));
+    @include df($ai: center);
+    margin: rem-calc(20) 0;
+
+    h1 {
+        font-size: rem-calc(20);
+        font-weight: 400;
+    }
+
+    p {
+        background: $edm-blue-color;
+        padding: rem-calc(8) rem-calc(25);
+        border-radius: rem-calc(5);
+        cursor: pointer;
+        color: $white;
+        margin-left: rem-calc(15);
+    }
+}

@@ -1,0 +1,219 @@
+// menu normal
+.sidebar_container {
+    background: $white;
+    width: rem-calc(200);
+    height: calc(100vh - rem-calc(60));
+    border-right: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
+
+    // pour les menus
+    .menus {
+        padding: rem-calc(20) rem-calc(10);
+        height: 100%;
+        overflow-y: auto;
+        @include scrollbar;
+
+        .container {
+            min-height: rem-calc(35);
+            margin-top: rem-calc(15);
+            position: relative;
+            padding: rem-calc(7) 0;
+
+            &:first-child {
+                margin-top: rem-calc(0);
+            }
+
+            .menu_name {
+                display: inline-block;
+                @include h100-w100;
+
+                .titre-fleche {
+                    @include df($ai: center);
+                    height: 100%;
+
+                    .titre-icon {
+                        width: 100%;
+                        @include df($ai: center);
+
+                        .icon {
+                            color: $sb-ic-txt-color;
+                            font-size: rem-calc(25);
+                        }
+
+                        p {
+                            color: $sb-ic-txt-color;
+                            font-size: rem-calc(15);
+                            font-weight: bold;
+                            margin-left: rem-calc(10);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background: rgba($color: $black, $alpha: 0.1);
+                border-top-right-radius: rem-calc(10);
+                border-bottom-right-radius: rem-calc(10);
+                transition: all 0.3s ease;
+
+                .titre-fleche {
+                    .titre-icon {
+                        .icon {
+                            @include sidebar-hover;
+                        }
+
+                        p {
+                            @include sidebar-hover;
+                        }
+                    }
+
+                    .fleche {
+                        @include sidebar-hover;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    height: 100%;
+                    width: rem-calc(4);
+                    background: $sb-hover-color;
+
+                    @include pos-abs-t-l($l: - rem-calc(10));
+                }
+            }
+        }
+    }
+}
+
+// menu activé
+.sidebar_container {
+    .menus {
+        .container.active {
+            background: rgba($color: $black, $alpha: 0.1);
+            border-top-right-radius: rem-calc(10);
+            border-bottom-right-radius: rem-calc(10);
+            transition: all 0.3s ease;
+
+            .menu_name.active {
+                .titre-fleche {
+                    .titre-icon {
+                        .icon {
+                            color: $sb-active;
+                        }
+
+                        p {
+                            color: $sb-active;
+                        }
+                    }
+
+                    .fleche {
+                        color: $sb-active;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    height: 100%;
+                    width: rem-calc(4);
+                    background: $sb-hover-color;
+
+                    @include pos-abs-t-l($l: - rem-calc(10));
+                }
+
+                &::before {
+                    content: "";
+                    height: 100%;
+                    width: rem-calc(4);
+                    background: $sb-active;
+
+                    @include pos-abs-t-l($l: - rem-calc(10));
+                }
+            }
+        }
+    }
+}
+
+// sous menu normal
+.sidebar_container {
+    .menus {
+        .container.payment {
+            .menu_name {
+                .titre-fleche {
+                    .titre-icon {
+                        width: 85%;
+                    }
+
+                    .fleche {
+                        @include h-w($h: 100%, $w: 15%);
+                        color: $sb-ic-txt-color;
+                    }
+                }
+            }
+
+            .sous_menus {
+                height: rem-calc(0);
+                overflow: hidden;
+
+                li {
+                    height: rem-calc(35);
+                    @include df($ai: center);
+                    margin-left: rem-calc(30);
+
+                    .lien {
+                        @include df($ai: center);
+                        @include h100-w100;
+                        color: $sb-ic-txt-color;
+                        font-size: rem-calc(15);
+                        font-weight: bold;
+                        padding-left: rem-calc(15);
+                        border-top-left-radius: rem-calc(5);
+                        border-bottom-left-radius: rem-calc(5);
+
+                        &:hover {
+                            background: rgba($color: $black, $alpha: 0.1);
+                            @include sidebar-hover;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .menu_name {
+                    .titre-fleche {
+                        .titre-icon {
+                            .icon {
+                                @include sidebar-hover;
+                            }
+
+                            p {
+                                @include sidebar-hover;
+                            }
+                        }
+
+                        .fleche {
+                            @include sidebar-hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// sous menu activé
+.sidebar_container {
+    .menus {
+        .container.payment.active {
+            .sous_menus {
+                height: rem-calc(70);
+
+                li {
+                    .lien.active {
+                        background: rgba($color: $black, $alpha: 0.1);
+                        font-size: rem-calc(16);
+                        color: $sb-active;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,19 @@
-import React from 'react'
-import { PAGE_COMPONENT_TYPE } from '../utils/types'
+import React, { useEffect } from 'react'
+import { page_dashboard } from '../utils/name_page'
+import PageContainer from '../components/page/PageContainer'
 
-const Dashboard: PAGE_COMPONENT_TYPE = () => {
+const Dashboard = () => {
+
+    useEffect(() => {
+        document.title = page_dashboard
+    }, [])
 
     return (
-        <div>Dashboard</div>
+        <PageContainer>
+            <div>
+                <p>Bonjour et bienvenue à tous et à toutes</p>
+            </div>
+        </PageContainer>
     )
 }
 
