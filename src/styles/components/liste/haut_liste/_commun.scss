@@ -1,0 +1,29 @@
+// commun normal
+.common {
+    @include df($ai: center, $jc: space-between);
+    padding: rem-calc(2) 0;
+
+    .loading_container {
+        @include h-w($h: rem-calc(35));
+    }
+
+    .filtre_by_search {
+        @include h-w($h: rem-calc(35), $w: rem-calc(250));
+
+        input {
+            @include h100-w100;
+            outline: none;
+            border: rem-calc(1) solid $light;
+            border-radius: rem-calc(5);
+            padding: 0 rem-calc(5) 0;
+            font-size: rem-calc(16);
+
+            &:focus {
+                border: none;
+                outline: rem-calc(1) solid $sb-active;
+            }
+
+            @include search-croix($fz: rem-calc(20));
+        }
+    }
+}

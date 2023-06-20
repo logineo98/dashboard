@@ -1,0 +1,19 @@
+// importation utils
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/faux_secteurs';
+@import './utils/mixins';
+@import './settings';
+
+// importation pages
+@import './pages/page404';
+@import './pages/body_page';
+@import './pages/login';
+
+// importation des components
+@import './components/loading/loading';
+@import './components/sidebar/sidebar';
+@import './components/titre_ajout/titre_ajout';
+@import './components/liste/haut_liste/haut_liste';
+@import './components/liste/liste';
+@import './components/add/add';

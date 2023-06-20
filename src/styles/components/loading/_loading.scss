@@ -1,0 +1,25 @@
+.loading {
+    @include df($ai: center, $jc: center);
+    flex-direction: column;
+
+    .container {
+        animation: rotate360 1s linear infinite;
+        transform: translateZ(0);
+        border-top: rem-calc(2) solid grey;
+        border-right: rem-calc(2) solid grey;
+        border-bottom: rem-calc(2) solid grey;
+        border-left: rem-calc(4) solid $black;
+        background: transparent;
+        border-radius: 50%;
+    }
+}
+
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

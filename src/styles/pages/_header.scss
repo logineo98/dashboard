@@ -1,0 +1,106 @@
+header {
+    @include df($ai: center, $jc: space-between);
+    background: $white;
+    height: rem-calc(60);
+    border-bottom: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
+
+
+    // logo edm
+    .logo_img_container {
+        display: inline-block;
+        @include h-w($h: rem-calc(60), $w: rem-calc(200));
+        border-bottom: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
+        border-right: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
+
+        img {
+            @include image($of: contain);
+        }
+    }
+
+    .header_container {
+        @include df($ai: center, $jc: space-between);
+        width: calc(100% - rem-calc(200));
+        padding: rem-calc(10);
+
+        .left_part {
+            @include h-w($h: 100%);
+            @include df($ai: center);
+            gap: rem-calc(5);
+            cursor: pointer;
+
+            .icon {
+                color: $sb-ic-txt-color;
+                font-size: rem-calc(30);
+            }
+
+            p {
+                color: $sb-ic-txt-color;
+                font-size: rem-calc(20);
+            }
+        }
+
+        .right_part {
+            @include df($ai: center);
+            @include h-w($h: 100%);
+            padding: rem-calc(5) rem-calc(10);
+            background: rgba($color: $black, $alpha: 0.1);
+            border-radius: rem-calc(20);
+            position: relative;
+
+            .username_icon {
+                @include df($ai: center);
+                cursor: pointer;
+
+                .icon {
+                    font-size: rem-calc(30);
+                    color: $sb-ic-txt-color;
+                }
+
+                .username {
+                    margin-left: rem-calc(5);
+                }
+
+                .icon2 {
+                    font-size: rem-calc(14);
+                    margin-top: rem-calc(4);
+                    margin-left: rem-calc(2);
+                    color: $sb-ic-txt-color;
+                }
+            }
+
+            .options {
+                background: $sb-ic-txt-color;
+                @include pos-abs-t-l($t: rem-calc(42), $l: - rem-calc(50));
+                @include h-w($w: rem-calc(180));
+                padding: rem-calc(10);
+                border-radius: rem-calc(8);
+
+                .icon_name {
+                    @include df($ai: center);
+                    padding: rem-calc(8);
+                    border-radius: rem-calc(5);
+
+                    .icon {
+                        font-size: rem-calc(20);
+                        color: $white;
+                    }
+
+                    .name {
+                        margin-left: rem-calc(8);
+                        color: $white;
+                    }
+
+                    &:hover {
+                        background: $white;
+                        cursor: pointer;
+
+                        .icon,
+                        .name {
+                            color: $sb-ic-txt-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

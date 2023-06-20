@@ -1,0 +1,246 @@
+.add {
+    @include pos-abs-t-l;
+    @include df(center, center);
+    @include h-w($h: 100vh, $w: 100%);
+    z-index: 5;
+
+    .overlay {
+        @include pos-abs-t-l;
+        @include h-w($h: 100vh, $w: 100%);
+        background: $black;
+        opacity: 0.7;
+    }
+
+    .add_container {
+        background: $white;
+        @include h-w($w: rem-calc(512));
+        max-height: 80%;
+        border-radius: rem-calc(15);
+        padding: 2%;
+        overflow-y: auto;
+        @include scrollbar;
+        position: relative;
+        margin: auto;
+
+        .croix {
+            @include pos-abs-t-r($t: rem-calc(10), $r: rem-calc(10));
+            @include h-w($h: rem-calc(40), $w: rem-calc(40));
+            color: $sb-ic-txt-color;
+            border-radius: 50%;
+            cursor: pointer;
+            background: $light;
+            padding: rem-calc(5);
+
+            &:hover {
+                background: $black;
+                color: $white;
+                transition: all 0.5s ease;
+            }
+        }
+
+        .loading_container {
+            @include pos-abs-t-l($t: rem-calc(10), $l: rem-calc(10));
+            @include h-w($h: rem-calc(40), $w: rem-calc(40));
+        }
+
+        .icon_name {
+            @include df(center, center);
+            text-align: center;
+            margin: 0 0 rem-calc(20) 0;
+
+            .icon_name_container {
+                .icon {
+                    color: $sb-ic-txt-color;
+                    font-size: rem-calc(40);
+                }
+
+                p {
+                    color: $sb-ic-txt-color;
+                    font-size: rem-calc(18);
+                    font-weight: bold;
+                }
+            }
+        }
+
+        form {
+
+            .input_label_container {
+                position: relative;
+                @include df();
+                flex-direction: column;
+                margin-top: rem-calc(20);
+
+                label {
+                    font-size: rem-calc(10);
+                    color: $sb-ic-txt-color;
+                    margin-bottom: rem-calc(5);
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                input {
+                    @include h-w(rem-calc(35), 100%);
+                    border-radius: rem-calc(8);
+                    border: rem-calc(1) solid $light;
+                    font-size: rem-calc(16);
+                    padding: 0 rem-calc(15);
+
+                    &:focus {
+                        outline: none;
+                        border: rem-calc(1) solid $sb-active;
+
+                        &~.icon {
+                            color: $sb-active;
+                        }
+                    }
+
+                    &.password {
+                        padding-left: rem-calc(15);
+                        padding-right: rem-calc(45);
+                    }
+                }
+
+                .icon {
+                    @include pos-abs-t-r(rem-calc(21), rem-calc(15));
+                    font-size: rem-calc(25);
+                    color: $edm-sa-color;
+
+                    &.password {
+                        cursor: pointer;
+                    }
+                }
+
+                .error {
+                    font-size: rem-calc(14);
+                    color: $sb-hover-color;
+                    font-style: italic;
+                }
+            }
+
+            .file_label_container {
+                @include df();
+                flex-direction: column;
+                margin-top: rem-calc(20);
+
+                label {
+                    font-size: rem-calc(10);
+                    color: $sb-ic-txt-color;
+                    margin-bottom: rem-calc(5);
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                .choose_abort_container {
+                    @include df($ai: center);
+                    gap: rem-calc(10);
+
+                    label.choose_image {
+                        color: $white;
+                        padding: rem-calc(10);
+                        border-radius: rem-calc(5);
+                        cursor: pointer;
+                        background: $sb-active;
+                        margin-bottom: 0;
+
+                        input[type='file'] {
+                            display: none;
+                        }
+                    }
+
+                    span.abort {
+                        font-size: rem-calc(10);
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        color: $white;
+                        padding: rem-calc(10) rem-calc(40);
+                        border-radius: rem-calc(5);
+                        cursor: pointer;
+                        background: $sb-active;
+                    }
+                }
+
+                label.preview_img_container {
+                    @include h-w($h: rem-calc(140), $w: 100%);
+
+                    img {
+                        @include image;
+                        border-radius: rem-calc(8);
+                    }
+                }
+
+                .error {
+                    font-size: rem-calc(14);
+                    color: $sb-hover-color;
+                    font-style: italic;
+                }
+            }
+
+            .textarea_label_container {
+                @include df();
+                flex-direction: column;
+                margin-top: rem-calc(20);
+
+                label {
+                    font-size: rem-calc(10);
+                    color: $sb-ic-txt-color;
+                    margin-bottom: rem-calc(5);
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                textarea {
+                    @include h-w(rem-calc(190), 100%);
+                    border-radius: rem-calc(8);
+                    border: rem-calc(1) solid $light;
+                    font-size: rem-calc(16);
+                    padding: rem-calc(8) rem-calc(10);
+                    @include scrollbar;
+                    resize: none;
+
+                    &:focus {
+                        outline: none;
+                        border: rem-calc(1) solid $sb-active;
+                    }
+                }
+
+                .error {
+                    font-size: rem-calc(14);
+                    color: $sb-hover-color;
+                    font-style: italic;
+                }
+            }
+
+            .save_abort {
+                @include df($ai: center, $jc: space-between);
+                gap: rem-calc(10);
+
+                button {
+                    display: block;
+                    margin-top: rem-calc(30);
+                    background: $edm-blue-color;
+                    color: $white;
+                    border: none;
+                    width: 100%;
+                    padding: rem-calc(10);
+                    border-radius: rem-calc(5);
+
+                    &.abort {
+                        background: $light;
+                        color: $sb-ic-txt-color;
+
+                        &:hover {
+                            background: $black;
+                            color: $white;
+                            transition: all 0.5s ease;
+                        }
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}

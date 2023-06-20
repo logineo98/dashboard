@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import RouterIndex from './pages/router'
+import { useDispatch } from 'react-redux'
+import { getAdmin, isUserConnected } from './redux/actions/user.actions'
+import { isTokenExpired } from './utils/functions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+  const [isConnected, setIsConnected] = useState(false)
+
+  const dispatch = useDispatch<any>()
+
+  useEffect(() => {
+    const expiration_date = localStorage.getItem('expiration_date')
+    const token = localStorage.getItem('token')
+    const user = localStorage.getItem('user')
+
+    if (expiration_date && token && user) {
+      if (isTokenExpired(new Date().getTime(), parseInt(expiration_date, 10))) {
+        setIsConnected(false)
+      } else {
+        setIsConnected(true)
+      }
+    } else {
+      setIsConnected(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    dispatch(isUserConnected(isConnected))
+    dispatch(getAdmin())
+  }, [isConnected, dispatch])
+
+  return <RouterIndex />
 }
 
-export default App;
+export default App
