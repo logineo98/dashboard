@@ -1,6 +1,6 @@
 .body_page {
-    @import './header';
     height: 100vh;
+    @import './header';
 
     .body_container {
         @include df;

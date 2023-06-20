@@ -12,12 +12,7 @@ const Header = () => {
 
     const { admin } = useSelector((state: RootReducerType) => state.user)
 
-    const hideSidebar = () => {
-        const menus = document.querySelector('.menus') as HTMLUListElement
-        const rightpart = document.querySelector('.right_part') as HTMLDivElement
 
-        menus.style.width = '10px'
-    }
 
     return (
         <header>
@@ -26,9 +21,9 @@ const Header = () => {
             </Link>
 
             <div className='header_container'>
-                <div className='left_part' onClick={hideSidebar}>
-                    <MdMenu className='icon' />
-                    <p>Menu</p>
+                <div className='left_part' onClick={() => { }}>
+                    {/* <MdMenu className='icon' />
+                    <p>Menu</p> */}
                 </div>
 
                 <div className='right_part'>

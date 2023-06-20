@@ -42,7 +42,7 @@ header {
         .right_part {
             @include df($ai: center);
             @include h-w($h: 100%);
-            padding: 0 rem-calc(10);
+            padding: rem-calc(5) rem-calc(10);
             background: rgba($color: $black, $alpha: 0.1);
             border-radius: rem-calc(20);
             position: relative;
