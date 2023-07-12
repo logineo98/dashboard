@@ -3,9 +3,6 @@ import DataTable from 'react-data-table-component'
 import { COLUMN_DATA_TABLE_TYPE, ListeType } from '../../utils/types'
 import HautListe from './haut_liste/HautListe'
 import NoFilteredDataSearch from './NoFilteredDataSearch'
-import { useSelector } from 'react-redux'
-import { RootReducerType } from '../../redux/store'
-import Loading from '../loading/Loading'
 
 const Liste = (props: ListeType<any, any>) => {
     const { title, datas, columns } = props
@@ -15,34 +12,10 @@ const Liste = (props: ListeType<any, any>) => {
     const [nbSelectedRow, setNbSelectedRow] = useState(0)
     const [ElementSelected, setElementSelected] = useState<Array<COLUMN_DATA_TABLE_TYPE>>([])
     const [emptyRowSelected, setEmptyRowSelected] = useState(false)
-    const [reduxLoading, setReduxLoading] = useState(false)
-
-    const { loadingDevis } = useSelector((state: RootReducerType) => state.devis)
-    const { loadingInfo } = useSelector((state: RootReducerType) => state.information)
-    const { loadingNews } = useSelector((state: RootReducerType) => state.news)
-    const { loadingPostPay } = useSelector((state: RootReducerType) => state.post_pay)
-    const { loadingPrePay } = useSelector((state: RootReducerType) => state.pre_pay)
-    const { loadingTown } = useSelector((state: RootReducerType) => state.town)
-    const { loadingUser } = useSelector((state: RootReducerType) => state.user)
 
     useEffect(() => {
         setFilteredDataSearch(datas)
     }, [datas])
-
-    useEffect(() => {
-        switch (title) {
-            case 'devis': setReduxLoading(loadingDevis); break
-            case 'information': setReduxLoading(loadingInfo); break
-            case 'news': setReduxLoading(loadingNews); break
-            case 'post_pay': setReduxLoading(loadingPostPay); break
-            case 'pre_pay': setReduxLoading(loadingPrePay); break
-            case 'town': setReduxLoading(loadingTown); break
-            case 'admin': setReduxLoading(loadingUser); break
-            case 'client': setReduxLoading(loadingUser); break
-
-            default: setReduxLoading(true); break
-        }
-    }, [title, loadingDevis, loadingInfo, loadingNews, loadingPostPay, loadingPrePay, loadingTown, loadingUser])
 
     useEffect(() => {
         const result = datas?.filter(data =>
@@ -86,8 +59,6 @@ const Liste = (props: ListeType<any, any>) => {
                 fixedHeaderScrollHeight='calc(100vh - (60px + 10px + 34px + 20px + 20px + 10px + 261px))'
                 noDataComponent={<NoFilteredDataSearch title={title} />}
                 highlightOnHover
-                // progressPending={reduxLoading}
-                // progressComponent={<Loading />}
                 pagination
                 paginationPerPage={10}
                 paginationRowsPerPageOptions={[10, 15, 20, 25, 30]}

@@ -27,7 +27,7 @@ const Commun: PAGE_COMPONENT_TYPE = ({ title, setSearch }) => {
             case 'admin': setReduxLoading(loadingUser); break
             case 'client': setReduxLoading(loadingUser); break
 
-            default: setReduxLoading(true); break
+            default: setReduxLoading(false); break
         }
     }, [title, loadingDevis, loadingInfo, loadingNews, loadingPostPay, loadingPrePay, loadingTown, loadingUser])
 

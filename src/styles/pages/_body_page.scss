@@ -1,6 +1,6 @@
 .body_page {
-    @import './header';
     height: 100vh;
+    @import './header';
 
     .body_container {
         @include df;
@@ -12,6 +12,8 @@
             height: calc(100vh - rem-calc(60));
             width: calc(100% - rem-calc(200));
             padding: rem-calc(10);
+
+            @import './copyright';
         }
     }
 }

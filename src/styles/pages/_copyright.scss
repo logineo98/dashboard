@@ -1,0 +1,18 @@
+.copyright {
+    @include pos-abs-b-l($b: rem-calc(10), $l: rem-calc(10));
+    width: calc(100vw - rem-calc(220));
+    margin-left: rem-calc(200);
+    text-align: right;
+
+    .container {
+        font-size: rem-calc(14);
+
+        .copyright_circle {
+            color: #a34670;
+        }
+
+        a {
+            color: #a34670;
+        }
+    }
+}

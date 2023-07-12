@@ -8,7 +8,7 @@ import { resetForget } from '../../redux/actions/user.actions'
 // importation des icons
 import { BiHome } from 'react-icons/bi'
 
-const LoginContainer: FC<{ children: JSX.Element }> = ({ children }) => {
+const LoginContainer: FC<{ children: JSX.Element, title?: string }> = ({ children, title }) => {
 
     const { loadingUser } = useSelector((state: RootReducerType) => state.user)
     const dispatch = useDispatch<any>()
@@ -21,11 +21,11 @@ const LoginContainer: FC<{ children: JSX.Element }> = ({ children }) => {
                 </div>
 
                 <div className='right_part'>
-                    <Link to='/' className='home' onClick={() => dispatch(resetForget())}><BiHome className='icon' /></Link>
+                    {title !== 'login' && <Link to='/' className='home' onClick={() => dispatch(resetForget())}><BiHome className='icon' /></Link>}
                     <div className='container'>
                         <div className='logo_welcome'>
                             <div className='logo_img_container'>
-                                <img src='./EDM.jpg' alt='logo_EDM' />
+                                <img src='./logo.jpg' alt='logo' />
                             </div>
                             <h1>Bienvenue à vous</h1>
                         </div>

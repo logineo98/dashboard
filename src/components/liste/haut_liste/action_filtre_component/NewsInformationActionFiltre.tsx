@@ -84,7 +84,10 @@ const NewActionFitre: PAGE_COMPONENT_TYPE = ({ title, nbSelectedRow, ElementSele
 
             data.append('title', title)
             data.append('content', content)
-            if (image) data.append('image', image)
+            if (image) {
+                if (typeof image === 'string') data.append('url', image)
+                else data.append('image', image)
+            }
 
             if (titre === 'news') {
                 id && dispatch(editNews(id, data, setSeeModalDisplayEditDelete))

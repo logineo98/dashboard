@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BiDownArrow, BiRightArrow, BiUserCircle } from 'react-icons/bi'
-import { MdLogout, MdMenu } from 'react-icons/md'
+import { MdLogout } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,23 +12,18 @@ const Header = () => {
 
     const { admin } = useSelector((state: RootReducerType) => state.user)
 
-    const hideSidebar = () => {
-        const menus = document.querySelector('.menus') as HTMLUListElement
-        const rightpart = document.querySelector('.right_part') as HTMLDivElement
 
-        menus.style.width = '10px'
-    }
 
     return (
         <header>
             <Link to='/' className='logo_img_container'>
-                <img src='./EDM.jpg' alt='logo EDM' />
+                <img src='./logo.jpg' alt='logo' />
             </Link>
 
             <div className='header_container'>
-                <div className='left_part' onClick={hideSidebar}>
-                    <MdMenu className='icon' />
-                    <p>Menu</p>
+                <div className='left_part' onClick={() => { }}>
+                    {/* <MdMenu className='icon' />
+                    <p>Menu</p> */}
                 </div>
 
                 <div className='right_part'>

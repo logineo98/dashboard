@@ -1,4 +1,5 @@
 export const page_connexion = 'EDM | Connexion'
+export const page_forget_password = 'EDM | Mot de passe oublié'
 export const page_dashboard = 'EDM | Tableau de bord'
 export const page_devis = 'EDM | Liste des devis'
 export const page_facture_post_pay = 'EDM | Factures post-payés'
