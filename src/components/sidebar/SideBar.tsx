@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { MdPayment, MdHistory, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown, MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { MdPayment, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown, MdOutlineAdminPanelSettings } from 'react-icons/md'
 import { RiInformationLine } from 'react-icons/ri'
-import { TbFileInvoice, TbTower } from 'react-icons/tb'
-import { GiSmartphone } from 'react-icons/gi'
+import { TbFileInvoice } from 'react-icons/tb'
+import { GiModernCity, GiSmartphone } from 'react-icons/gi'
 
 const SideBar = () => {
     const { pathname } = useLocation()
@@ -69,25 +69,13 @@ const SideBar = () => {
                     <NavLink to='/town' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
                             <div className='titre-icon'>
-                                <TbTower className='icon' />
+                                <GiModernCity className='icon' />
                                 <p>Villes</p>
                             </div>
                             {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
-
-                {/* <li className={menu.historical ? 'container active' : 'container'}>
-                    <NavLink to='/historical' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
-                        <div className='titre-fleche'>
-                            <div className='titre-icon'>
-                                <MdHistory className='icon' />
-                                <p>Historiques</p>
-                            </div>
-                            <MdOutlineKeyboardArrowRight className='fleche' />
-                        </div>
-                    </NavLink>
-                </li> */}
 
                 <li className={menu.assistance ? 'container active' : 'container'}>
                     <NavLink to='/assistance' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>

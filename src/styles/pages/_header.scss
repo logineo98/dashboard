@@ -4,13 +4,13 @@ header {
     height: rem-calc(60);
     border-bottom: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
 
-
     // logo edm
     .logo_img_container {
         display: inline-block;
         @include h-w($h: rem-calc(60), $w: rem-calc(200));
         border-bottom: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
         border-right: rem-calc(1) rgba($color: $black, $alpha: 0.1) solid;
+        padding: rem-calc(5);
 
         img {
             @include image($of: contain);
@@ -74,6 +74,7 @@ header {
                 @include h-w($w: rem-calc(180));
                 padding: rem-calc(10);
                 border-radius: rem-calc(8);
+                z-index: 10;
 
                 .icon_name {
                     @include df($ai: center);

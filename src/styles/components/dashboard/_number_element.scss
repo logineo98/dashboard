@@ -1,0 +1,48 @@
+.number_element {
+    @include df($ai: center, $jc: space-between);
+    height: rem-calc(90);
+
+    .container {
+        background: $white;
+        padding: rem-calc(20) rem-calc(10);
+        flex-basis: 24%;
+        @include df($ai: center);
+        border-radius: rem-calc(10);
+        box-shadow: 0 rem-calc(2) rem-calc(4) rgba(0, 0, 0, 0.1);
+        user-select: none;
+
+        .icon_container {
+            background: rgba($color: $black, $alpha: 0.1);
+            padding: rem-calc(5);
+            border-radius: rem-calc(5);
+
+            .icon {
+                font-size: rem-calc(36);
+                color: $sb-active;
+            }
+        }
+
+        .name_number {
+            margin-left: rem-calc(20);
+
+            .name {
+                height: rem-calc(20);
+                font-size: rem-calc(16);
+                font-weight: 700;
+                color: rgba($color: $black, $alpha: 0.7);
+            }
+
+            .number {
+                height: rem-calc(25);
+                @include df(center, center);
+                font-size: rem-calc(20);
+                color: rgba($color: $black, $alpha: 0.7);
+            }
+        }
+
+        &:hover {
+            background: rgba($color: $black, $alpha: 0.1);
+        }
+
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PAGE_COMPONENT_TYPE } from '../utils/types'
 import LoginContainer from '../components/login/LoginContainer'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 // importation des icons
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { page_connexion } from '../utils/name_page'
 
 const Login: PAGE_COMPONENT_TYPE = () => {
     const data = { username: '', password: '' }
@@ -54,8 +55,12 @@ const Login: PAGE_COMPONENT_TYPE = () => {
         setLoginData({ ...loginData, [e.target.id]: e.target.value })
     }
 
+    useEffect(() => {
+        document.title = page_connexion
+    }, [])
+
     return (
-        <LoginContainer>
+        <LoginContainer title='login'>
             <form onSubmit={handleSubmit}>
                 <div className='input_container'>
                     <input type='text' name='username' id='username' placeholder='Username ou num. de tél.' onChange={handleChange} />

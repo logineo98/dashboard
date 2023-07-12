@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginContainer from '../components/login/LoginContainer'
 import { FORGET_PASSWORD_TYPE } from '../utils/types'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducerType } from '../redux/store'
-import { LoadingUser, getAdminByUsernameOrPhone, resendCode, resetForget, resetPassword, sendPin } from '../redux/actions/user.actions'
+import { getAdminByUsernameOrPhone, resendCode, resetForget, resetPassword, sendPin } from '../redux/actions/user.actions'
 import { toast } from 'react-toastify'
 
 // importation des icons
 import { MdOutlineAccountCircle } from 'react-icons/md'
 import { BsSend } from 'react-icons/bs'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { page_forget_password } from '../utils/name_page'
 
 
 const ForgetPassword = () => {
@@ -76,6 +77,10 @@ const ForgetPassword = () => {
         setSmsEmail({ smsOrEmail: e.target.value })
     }
 
+    useEffect(() => {
+        document.title = page_forget_password
+    }, [])
+
     return (
         <LoginContainer>
             <form onSubmit={handleSubmit}>
@@ -124,6 +129,7 @@ const ForgetPassword = () => {
                             <span onClick={resendCodePin}>Renvoyer le code</span>
                             <span onClick={() => { setVerifyData({ user: false, choose: true, code: false, write_password: false, success: false }) }}>Retour</span>
                         </div>
+                        <p style={{ color: 'black', opacity: '0.1' }}> {pinForget} </p>
                     </div>
                 }
 

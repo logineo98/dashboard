@@ -1,7 +1,7 @@
 .titre_ajout {
     @include h-w($h: rem-calc(40));
     @include df($ai: center);
-    margin: rem-calc(20) 0;
+    margin: rem-calc(10) 0;
 
     h1 {
         font-size: rem-calc(20);

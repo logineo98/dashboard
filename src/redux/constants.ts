@@ -11,6 +11,7 @@ export const api_town = `${api}/cities`
 export const api_devis = `${api}/devis`
 export const api_invoice = `${api}/invoices`
 export const api_isago = `${api}/isago`
+export const api_stat = `${api}/stats/count`
 
 // admin auth
 export const LOADING_USER: string = 'LOADING_USER'
@@ -74,3 +75,13 @@ export const GET_ALL_POST_PAYS: string = 'GET_ALL_POST_PAYS'
 export const LOADING_PRE_PAY: string = 'LOADING_PRE_PAY'
 export const ERROR_PRE_PAY: string = 'ERROR_PRE_PAY'
 export const GET_ALL_PRE_PAYS: string = 'GET_ALL_PRE_PAYS'
+
+// statistique
+export const LOADING_STAT: string = 'LOADING_STAT'
+export const ERROR_STAT: string = 'ERROR_STAT'
+export const GET_ALL_STATS: string = 'GET_ALL_STATS'
+
+// statistique by year
+export const LOADING_STAT_BY_YEAR: string = 'LOADING_STAT_BY_YEAR'
+export const ERROR_STAT_BY_YEAR: string = 'ERROR_STAT_BY_YEAR'
+export const GET_ALL_STATS_BY_YEAR: string = 'GET_ALL_STATS_BY_YEAR'
