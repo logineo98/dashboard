@@ -1,7 +1,8 @@
-@mixin df($ai: flex-start, $jc: flex-start) {
+@mixin df($ai: flex-start, $jc: flex-start, $dir: row) {
     display: flex;
     align-items: $ai;
     justify-content: $jc;
+    flex-direction: $dir;
 }
 
 @mixin h100-w100 {

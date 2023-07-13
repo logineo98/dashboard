@@ -39,7 +39,7 @@ const Commun: PAGE_COMPONENT_TYPE = ({ title, setSearch }) => {
             </div>
 
             <div className='filtre_by_search'>
-                <input type='search' name='search' id='search' onChange={(e) => setSearch && setSearch(e.target.value)} />
+                <input type='search' name='search' id='search' placeholder='Recherche...' onChange={(e) => setSearch && setSearch(e.target.value)} />
             </div>
         </div >
     )

@@ -1,0 +1,25 @@
+.stat_top_data_table {
+    margin-top: rem-calc(10);
+    @include df($ai: center);
+
+    .stat_container {
+        @include df($dir: column);
+        margin-left: rem-calc(10);
+        background: rgba($color: $black, $alpha: 0.1);
+        padding: rem-calc(5);
+        border-radius: rem-calc(3);
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        .stat_name,
+        .stat_number {
+            display: inline-block;
+            font-size: rem-calc(13);
+            text-align: center;
+            width: 100%;
+            color: $sb-ic-txt-color;
+        }
+    }
+}

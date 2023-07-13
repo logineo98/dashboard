@@ -1,0 +1,24 @@
+.filter_import_export_nb_element {
+    @include df($ai: center, $jc: space-between);
+
+    .filter_import_export_container {
+        margin-top: rem-calc(10);
+        @include df($ai: center);
+
+        .filter_container {
+            .filter_icon {}
+        }
+
+        .import_export_container {
+            margin-left: rem-calc(20);
+
+            .exporter {}
+
+            .importer {
+                margin-left: rem-calc(10);
+            }
+        }
+    }
+
+    .nb_elements {}
+}
