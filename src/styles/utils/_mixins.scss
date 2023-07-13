@@ -164,3 +164,15 @@
         padding: 0 rem-calc(10);
     }
 }
+
+@mixin bouton-top-data-table($pd: rem-calc(7)) {
+    border: none;
+    padding: $pd;
+    border-radius: rem-calc(5);
+    cursor: pointer;
+    color: $sb-ic-txt-color;
+
+    &:hover {
+        background: rgba($color: $black, $alpha: 0.2);
+    }
+}

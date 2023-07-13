@@ -49,7 +49,7 @@ const PageContainer: FC<{ children: JSX.Element }> = ({ children }) => {
                 <div className='right_body'>
                     {children}
 
-                    <Copyright />
+                    {/* <Copyright /> */}
                 </div>
             </div>
         </div>

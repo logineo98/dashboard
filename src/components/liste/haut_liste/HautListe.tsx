@@ -11,7 +11,7 @@ const HautListe: PAGE_COMPONENT_TYPE = ({ title, ElementSelected, nbSelectedRow,
         <Commun title={title} setSearch={setSearch} />
         <Stats />
         <FilterExportImport />
-        <ActionFiltre title={title} nbSelectedRow={nbSelectedRow} ElementSelected={ElementSelected} setEmptyRowSelected={setEmptyRowSelected} setElementSelected={setElementSelected} />
+        {/* <ActionFiltre title={title} nbSelectedRow={nbSelectedRow} ElementSelected={ElementSelected} setEmptyRowSelected={setEmptyRowSelected} setElementSelected={setElementSelected} /> */}
     </div>
 )
 

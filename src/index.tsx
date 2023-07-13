@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals'
 // importation des styles
 import './styles/index.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
+import 'reactjs-popup/dist/index.css'
+
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import store from './redux/store'

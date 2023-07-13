@@ -3,6 +3,7 @@ import Liste from '../liste/Liste'
 import { useSelector } from 'react-redux'
 import { RootReducerType } from '../../redux/store'
 import { COLUMN_DATA_TABLE_TYPE, PAGE_COMPONENT_TYPE } from '../../utils/types'
+import DisplayEditDelete from './display_edit_delete/DisplayEditDelete'
 
 const ListeAdmin: PAGE_COMPONENT_TYPE = () => {
 
@@ -19,7 +20,7 @@ const ListeAdmin: PAGE_COMPONENT_TYPE = () => {
         { name: 'Rôle', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.role === 'ADMIN' ? 'Administrateur' : 'Supeur administrateur', sortable: true },
         { name: 'Connecté', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.id === admin.id ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Oui</span> : <span className='column' style={{ color: '#EF3E34' }}>Non</span>, sortable: true },
         { name: 'Statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.enabled ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>activé</span> : <span className='column' style={{ color: '#EF3E34' }}>non activé</span>, sortable: true },
-        { name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => <><span>delete</span><span>delete</span><span>delete</span></> }
+        { name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => <DisplayEditDelete /> }
     ]
 
     return <Liste title='admin' datas={data} columns={columns} />

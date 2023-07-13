@@ -57,6 +57,7 @@ const Liste = (props: ListeType<any, any>) => {
                 onSelectedRowsChange={({ selectedCount, selectedRows, allSelected }) => { setNbSelectedRow(selectedCount); setElementSelected(selectedRows) }}
                 fixedHeader
                 fixedHeaderScrollHeight='calc(100vh - (60px + 10px + 34px + 20px + 20px + 10px + 261px))'
+                // fixedHeaderScrollHeight='calc(100vh - (60px + 10px + 34px + 20px + 20px + 10px + 300px))'
                 noDataComponent={<NoFilteredDataSearch title={title} />}
                 highlightOnHover
                 pagination

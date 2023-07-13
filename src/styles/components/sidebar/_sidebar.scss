@@ -13,7 +13,6 @@
         @include scrollbar;
 
         .container {
-            min-height: rem-calc(35);
             margin-top: rem-calc(15);
             position: relative;
 
@@ -24,6 +23,7 @@
             .menu_name {
                 display: inline-block;
                 @include h100-w100;
+                padding: rem-calc(5) 0;
 
                 .titre-fleche {
                     @include df($ai: center);

@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { MdPayment, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown, MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { MdPayment, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { RiInformationLine } from 'react-icons/ri'
 import { TbFileInvoice } from 'react-icons/tb'
-import { GiModernCity, GiSmartphone } from 'react-icons/gi'
+import { GiSmartphone } from 'react-icons/gi'
 import { AiOutlineSetting } from 'react-icons/ai'
 
 const SideBar = () => {
@@ -109,7 +109,7 @@ const SideBar = () => {
                 </li>
 
                 <li className={menu.setting ? 'container sub_menu active' : 'sub_menu container'}>
-                    <NavLink to='/admin' className={({ isActive }) => { if (isActive || pathname === '/list-credit-isago') return 'menu_name active'; else return 'menu_name' }}>
+                    <NavLink to='/admin' className={({ isActive }) => { if (isActive || pathname === '/town') return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
                             <div className='titre-icon'>
                                 <AiOutlineSetting className='icon' />
