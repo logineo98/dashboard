@@ -57,7 +57,7 @@ export const editNews = (id: string, data: FormData, setSeeModalDisplayEditDelet
     }
 }
 
-export const deleteNews = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>, setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
+export const deleteNews = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingNews())
 
@@ -65,7 +65,6 @@ export const deleteNews = (id: string, setSeeModalDisplayEditDelete: React.Dispa
 
         toast.success('L\'actualité a été supprimée avec succès.')
 
-        setEmptyRowSelected && setEmptyRowSelected(true)
         setSeeModalDisplayEditDelete(false)
 
         dispatch({ type: DELETE_NEWS, payload: { data: response.data, id } })

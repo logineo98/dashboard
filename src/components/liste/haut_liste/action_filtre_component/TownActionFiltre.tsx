@@ -122,20 +122,18 @@ const TownActionFiltre: PAGE_COMPONENT_TYPE = ({ nbSelectedRow, ElementSelected,
                             ))
                         }
 
-                        {chooseAction && chooseAction === 'supprimer' &&
-                            ElementSelected?.map((town, i) => (
-                                <div key={i} className='delete'>
-                                    <div className='container'>
-                                        <p> Voulez-vous vraiment supprimer cette ville ? </p>
+                        {/* {chooseAction && chooseAction === 'supprimer' &&
+                            <div className='delete'>
+                                <div className='container'>
+                                    <p> Voulez-vous vraiment supprimer cette ville ? </p>
 
-                                        <div className='yes_or_no_container'>
-                                            <span className='yes' onClick={() => { dispatch(deleteTown(town.id, setSeeModalDisplayEditDelete, setEmptyRowSelected)); if (allTowns.length === 1) { setChooseAction(''); localStorage.setItem('choose_action', '') } setElementSelected && setElementSelected([]); }}>OUI</span>
-                                            <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
-                                        </div>
+                                    <div className='yes_or_no_container'>
+                                        <span className='yes' onClick={() => { dispatch(deleteTown(row?.id, setSeeModalDisplayEditDelete)); if (allTowns.length === 1) { setChooseAction(''); localStorage.setItem('choose_action', '') } setElementSelected && setElementSelected([]); }}>OUI</span>
+                                        <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
                                     </div>
                                 </div>
-                            ))
-                        }
+                            </div>
+                        } */}
                     </div>
                 </div>
             }

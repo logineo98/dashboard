@@ -40,4 +40,5 @@
     width: auto !important;
     padding: rem-calc(8) !important;
     @include df($ai: center !important, $jc: center !important);
+    z-index: 4 !important;
 }

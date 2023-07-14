@@ -19,12 +19,14 @@ const FilterExportImport = () => {
                     <AiOutlineFilter className='filter_icon' />
                 </button>
 
-                {filterChoosed != '' && <div className='type_filter_close'>
-                    <span className='type'>Filtre par {filterChoosed}</span>
-                    <button className='close_container' onClick={() => setFilterChoosed('')}>
-                        <AiOutlineClose className='close_icon' />
-                    </button>
-                </div>}
+                {filterChoosed !== '' &&
+                    <div className='type_filter_close'>
+                        <span className='type'>Filtre par {filterChoosed}</span>
+                        <button className='close_container' onClick={() => setFilterChoosed('')}>
+                            <AiOutlineClose className='close_icon' />
+                        </button>
+                    </div>
+                }
             </div>
 
             {displayFilter &&

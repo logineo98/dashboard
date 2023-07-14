@@ -59,7 +59,6 @@ export type NUMBER_ELEMENT_DASHBOARD_TYPE = {
 
 export type STATISTIQUE_TYPE = { failure: number, pending: number, success: number }
 
-
 export type COLUMN_DATA_TABLE_TYPE = {
     id: string
     username: string
@@ -129,7 +128,7 @@ export type COLUMN_DATA_TABLE_TYPE = {
     nbKw: string | string
     motif: string
     localisation: string
-    customer: { name: string, phone: string }
+    customer: { name: string, phone: string },
 }
 
 export type PAGE_COMPONENT_TYPE = (props: {

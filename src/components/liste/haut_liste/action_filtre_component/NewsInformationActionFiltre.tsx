@@ -240,7 +240,7 @@ const NewActionFitre: PAGE_COMPONENT_TYPE = ({ title, nbSelectedRow, ElementSele
                             ))
                         }
 
-                        {chooseAction && chooseAction === 'supprimer' &&
+                        {/* {chooseAction && chooseAction === 'supprimer' &&
                             ElementSelected?.map((news_information, i) => (
                                 title === 'news' ?
                                     <div key={i} className='delete'>
@@ -265,7 +265,7 @@ const NewActionFitre: PAGE_COMPONENT_TYPE = ({ title, nbSelectedRow, ElementSele
                                         </div>
                                     </div>
                             ))
-                        }
+                        } */}
                     </div>
                 </div>
             }

@@ -157,7 +157,7 @@ export const editAdmin = (data: ADD_EDIT_ADMIN_TYPE, setSeeModalDisplayEditDelet
     }
 }
 
-export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>, setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
+export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingUser())
 
@@ -165,7 +165,6 @@ export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Disp
 
         toast.success('L\'administrateur a été supprimé avec succès.')
 
-        setEmptyRowSelected && setEmptyRowSelected(true)
         setSeeModalDisplayEditDelete(false)
 
         dispatch({ type: DELETE_ADMIN, payload: { data: response.data, id } })

@@ -224,7 +224,7 @@ const AdminActionFiltre: PAGE_COMPONENT_TYPE = ({ nbSelectedRow, ElementSelected
                             ))
                         }
 
-                        {chooseAction && chooseAction === 'supprimer' &&
+                        {/* {chooseAction && chooseAction === 'supprimer' &&
                             ElementSelected?.map((admin_, i) => (
                                 <div key={i} className='delete'>
                                     <div className='container'>
@@ -237,7 +237,7 @@ const AdminActionFiltre: PAGE_COMPONENT_TYPE = ({ nbSelectedRow, ElementSelected
                                     </div>
                                 </div>
                             ))
-                        }
+                        } */}
 
                         {chooseAction && chooseAction === 'activer' &&
                             ElementSelected?.map((admin_, i) => (
@@ -246,7 +246,7 @@ const AdminActionFiltre: PAGE_COMPONENT_TYPE = ({ nbSelectedRow, ElementSelected
                                         <label htmlFor='status'>Statut :</label>
                                         <select name='status' id='status' value={!admin_.enabled ? 'activer' : 'desactiver'} onChange={e => setChooseStatus(e.target.value)}>
                                             {!admin_.enabled && <option value='activer'>Activer</option>}
-                                            {admin_.enabled && <option value='desactiver'>Desactiver</option>}
+                                            {admin_.enabled && <option value='desactiver'>Désactiver</option>}
                                         </select>
                                     </div>
 
