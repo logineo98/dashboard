@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { AiOutlineClose, AiOutlineFilter } from 'react-icons/ai'
+import { PAGE_COMPONENT_TYPE } from '../../../utils/types'
 
-const FilterExportImport = () => {
+const FilterExportImport: PAGE_COMPONENT_TYPE = ({ title }) => {
 
     const [displayFilter, setDisplayFilter] = useState(false)
     const [filterChoosed, setFilterChoosed] = useState('')
@@ -11,6 +12,8 @@ const FilterExportImport = () => {
 
         setDisplayFilter(false)
     }
+
+    console.log(title)
 
     return (
         <div className='filter_import_export_container'>
@@ -31,28 +34,97 @@ const FilterExportImport = () => {
 
             {displayFilter &&
                 <form onSubmit={handleFilter} className='filter_form'>
+                    {(title !== 'news' && title !== 'information') &&
+                        <div className='input_select_container'>
+                            <select onChange={e => setFilterChoosed(e.target.value)} value={filterChoosed}>
+                                {(title === 'admin' || title === 'client') &&
+                                    <>
+                                        <option value=''>Type de statut du compte</option>
+                                        <option value='activé'>Activé</option>
+                                        <option value='non activé'>Non activé</option>
+                                    </>
+                                }
+
+                                {title === 'devis' &&
+                                    <>
+                                        <option value=''>Type de filtre</option>
+                                        <option value='validation'>Validation</option>
+                                        <option value='paiement'>Paiement</option>
+                                        <option value='date'>Date</option>
+                                    </>
+                                }
+
+                                {(title === 'post_pay' || title === 'pre_pay') &&
+                                    <>
+                                        <option value=''>Type de filtre</option>
+                                        <option value='paiement'>Paiement</option>
+                                        <option value='date'>Date</option>
+                                    </>
+                                }
+                            </select>
+                        </div>}
+
+                    {/* for the devis */}
                     <div className='input_select_container'>
-                        <select onChange={e => setFilterChoosed(e.target.value)} value={filterChoosed}>
-                            <option value=''>Type de filtrage</option>
-                            <option value='statut'>Statut</option>
-                            <option value='statut validation'>Statut validation</option>
-                            <option value='statut paiement'>Paiement statut</option>
-                            <option value='date'>Date</option>
-                        </select>
+                        {filterChoosed && title === 'devis' && filterChoosed !== 'date' &&
+                            <select>
+                                {filterChoosed === 'validation' &&
+                                    <>
+                                        <option value=''>Statut validation</option>
+                                        <option value='en cours'>En cours</option>
+                                        <option value='payé'>Payé</option>
+                                        <option value='annulé'>Annulé</option>
+                                    </>
+                                }
+
+                                {filterChoosed === 'paiement' &&
+                                    <>
+                                        <option value=''>Statut paiement</option>
+                                        <option value='en cours'>En cours</option>
+                                        <option value='payé'>Payé</option>
+                                        <option value='annulé'>Annulé</option>
+                                    </>
+                                }
+                            </select>
+                        }
                     </div>
 
+                    {/* for the post pay and pre pay */}
                     <div className='input_select_container'>
-                        <select>
-                            <option value=''>Type de statut</option>
-                            <option value='en_cours'>En cours</option>
-                            <option value='paye'>Payer</option>
-                            <option value='annule'>Annuler</option>
-                        </select>
+                        {filterChoosed && (title === 'post_pay' || title === 'pre_pay') && filterChoosed === 'paiement' &&
+                            <select>
+                                <option value=''>Statut paiement</option>
+                                <option value='en cours'>En cours</option>
+                                <option value='payé'>Payé</option>
+                                <option value='annulé'>Annulé</option>
+                            </select>
+                        }
                     </div>
 
                     <div className='input_date_container'>
-                        <input type='date' name='date_begin' id='date_begin' />
-                        <input type='date' name='date_end' id='date_end' />
+                        {/* for the devis */}
+                        {(title === 'devis' && filterChoosed === 'date') &&
+                            <>
+                                <input type='date' name='date_begin' id='date_begin' />
+                                <input type='date' name='date_end' id='date_end' />
+                            </>
+                        }
+
+                        {/* for the post pay and pre pay */}
+                        {filterChoosed && (title === 'post_pay' || title === 'pre_pay') && filterChoosed === 'date' &&
+                            <>
+                                <input type='date' name='date_begin' id='date_begin' />
+                                <input type='date' name='date_end' id='date_end' />
+                            </>
+                        }
+
+                        {/* for information and news */}
+                        {(title === 'news' || title === 'information') &&
+                            <>
+                                <input type='date' name='date_begin' id='date_begin' />
+                                <input type='date' name='date_end' id='date_end' />
+                            </>
+                        }
                     </div>
 
                     <div className='cancel_apply_container'>

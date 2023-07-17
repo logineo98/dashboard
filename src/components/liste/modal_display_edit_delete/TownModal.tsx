@@ -40,7 +40,7 @@ const TownModal: FC<TOWN_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, setSee
     }
 
     useEffect(() => {
-        setEditTownData({ id: row?.id, name: row?.name })
+        setEditTownData({ id: row ? row.id : '', name: row ? row.name : '' })
     }, [row])
 
     return (

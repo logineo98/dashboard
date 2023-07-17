@@ -45,7 +45,7 @@ const ListeNewsInformation: PAGE_COMPONENT_TYPE = ({ title }) => {
         {
             name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
                 <div className='display_edit_delete'>
-                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
+                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
                                 <div className='container_icon'> <AiOutlineEye /> </div>

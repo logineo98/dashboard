@@ -54,7 +54,7 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
     }
 
     useEffect(() => {
-        setEditAdminData({ id: row?.id, email: row?.email, name: row?.name, phone: row?.phone, username: row?.username })
+        setEditAdminData({ id: row ? row.id : '', email: row ? row.email : '', name: row ? row.name : '', phone: row ? row.phone : '', username: row ? row.username : '' })
     }, [row])
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
                 <div className='overlay'></div>
 
                 <div className='display_edit_delete_modal_container'>
-                    <RxCross2 className='croix' onClick={() => { setSeeModalDisplayEditDelete(false) }} />
+                    <RxCross2 className='croix' onClick={() => { setSeeModalDisplayEditDelete(false); setErr(data) }} />
 
                     <div className='loading_container'>
                         {loadingUser && <Loading h_w={40} hide_text mg='0px' padding='0px' />}

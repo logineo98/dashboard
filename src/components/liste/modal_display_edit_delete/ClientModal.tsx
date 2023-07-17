@@ -42,7 +42,7 @@ const ClientModal: FC<CLIENT_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, se
                     <div className='icon_name'>
                         <div className='icon_name_container'>
                             <FaUserCircle className='icon' />
-                            <p>ADMINISTRATEUR</p>
+                            <p>CLIENT MOBILE</p>
                         </div>
                     </div>
 

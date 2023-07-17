@@ -8,14 +8,6 @@
 
         .filter_container {
             @include bouton-top-data-table();
-
-            &:focus {
-                background: $sb-hover-color;
-
-                .filter_icon {
-                    color: $white;
-                }
-            }
         }
 
         .type_filter_close {
@@ -38,11 +30,12 @@
     }
 
     form.filter_form {
-        background: red;
+        background: rgba($color: $gray, $alpha: 1);
         z-index: 10;
         @include pos-abs-t-l($t: - rem-calc(30), $l: rem-calc(30));
         padding: rem-calc(10);
         border-radius: rem-calc(5);
+        border: rem-calc(1) solid rgba($color: $black, $alpha: 0.5);
 
         .input_select_container {
             margin: 0 0 rem-calc(10);

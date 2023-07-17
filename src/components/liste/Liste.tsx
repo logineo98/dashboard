@@ -64,6 +64,7 @@ const Liste = (props: ListeType<any, any>) => {
                 paginationPerPage={10}
                 paginationRowsPerPageOptions={[10, 15, 20, 25, 30]}
                 paginationComponentOptions={{ rowsPerPageText: 'Ligne par page', rangeSeparatorText: 'de' }}
+                onRowClicked={(row) => { console.log(row) }}
                 customStyles={{
                     head: { style: { borderTop: '1px solid #d3d3d3', borderLeft: '1px solid #d3d3d3', borderRight: '1px solid #d3d3d3' } },
                     rows: { style: { borderRight: '1px solid #d3d3d3', borderLeft: '1px solid #d3d3d3' } },

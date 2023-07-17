@@ -8,7 +8,6 @@ import { FaUserCircle } from 'react-icons/fa'
 import { validation_news } from '../../../utils/validation'
 import { deleteNews, editNews } from '../../../redux/actions/news.actions'
 import { deleteInformation, editInformation } from '../../../redux/actions/information.actions'
-import { deleteAdmin } from '../../../redux/actions/user.actions'
 import { api_img } from '../../../redux/constants'
 import { displayDate } from '../../../utils/functions'
 
@@ -61,7 +60,7 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
     }
 
     useEffect(() => {
-        setEditNewsInformationData({ id: row?.id, title: row?.title, content: row?.content, image: row?.image })
+        setEditNewsInformationData({ id: row ? row.id : '', title: row ? row.title : '', content: row ? row.content : '', image: row ? row.image : '' })
     }, [row])
 
     return (
@@ -113,8 +112,7 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                         </div>
                     }
 
-                    {type === 'modifier' &&
-                        title === 'news' ?
+                    {type === 'modifier' && title === 'news' &&
                         <form onSubmit={handleSubmit} encType='multipart/form-data'>
                             <div className='file_label_container'>
                                 <label>Image mise en avant de l'actualité</label>
@@ -153,16 +151,18 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                                 <button type='reset' className='abort' disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete(false); setPreviewImg(''); setErr(data); }}>Annuler</button>
                             </div>
                         </form>
-                        :
+                    }
+
+                    {type === 'modifier' && title === 'information' &&
                         <form onSubmit={handleSubmit} encType='multipart/form-data'>
                             <div className='file_label_container'>
-                                <label>Image mise en avant de l'information</label>
+                                <label>Image mise en avant de l'actualité</label>
                                 {previewImg ?
                                     <label htmlFor='image' className='preview_img_container'>
-                                        <img src={previewImg as string} alt='image_information' />
+                                        <img src={previewImg as string} alt='image_actualité' />
                                     </label> : editNewsInformationData.image &&
                                     <label htmlFor='image' className='img_container'>
-                                        <img src={`${api_img}/${row?.image}`} alt='image_information' />
+                                        <img src={`${api_img}/${row?.image}`} alt='image_actualité' />
                                     </label>
                                 }
                                 {err?.image && <span className='error'> {err?.image as string} </span>}
@@ -188,14 +188,13 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                             </div>
 
                             <div className='save_abort'>
-                                <button disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                                <button type='reset' className='abort' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete(false); setPreviewImg(''); setErr(data); }}>Annuler</button>
+                                <button disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
+                                <button type='reset' className='abort' disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete(false); setPreviewImg(''); setErr(data); }}>Annuler</button>
                             </div>
                         </form>
                     }
 
-                    {type === 'supprimer' &&
-                        title === 'news' ?
+                    {type === 'supprimer' && title === 'news' &&
                         <div className='delete'>
                             <div className='container'>
                                 <p> Voulez-vous vraiment supprimer cette actualité ? </p>
@@ -206,7 +205,9 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                                 </div>
                             </div>
                         </div>
-                        :
+                    }
+
+                    {type === 'supprimer' && title === 'information' &&
                         <div className='delete'>
                             <div className='container'>
                                 <p> Voulez-vous vraiment supprimer cette  information ? </p>

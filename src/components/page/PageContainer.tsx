@@ -17,23 +17,23 @@ const PageContainer: FC<{ children: JSX.Element }> = ({ children }) => {
 
     const dispatch = useDispatch<any>()
 
-    useEffect(() => {
-        const expiration_date = localStorage.getItem('expiration_date')
-        const token = localStorage.getItem('token')
-        const user = localStorage.getItem('user')
+    // useEffect(() => {
+    //     const expiration_date = localStorage.getItem('expiration_date')
+    //     const token = localStorage.getItem('token')
+    //     const user = localStorage.getItem('user')
 
-        if (expiration_date && token && user) {
-            if (isTokenExpired(new Date().getTime(), parseInt(expiration_date, 10))) {
-                setIsConnected(false)
-                navigate('/')
-            } else {
-                setIsConnected(true)
-            }
-        } else {
-            setIsConnected(false)
-            navigate('/')
-        }
-    }, [navigate])
+    //     if (expiration_date && token && user) {
+    //         if (isTokenExpired(new Date().getTime(), parseInt(expiration_date, 10))) {
+    //             setIsConnected(false)
+    //             navigate('/')
+    //         } else {
+    //             setIsConnected(true)
+    //         }
+    //     } else {
+    //         setIsConnected(false)
+    //         navigate('/')
+    //     }
+    // }, [navigate])
 
     useEffect(() => {
         dispatch(isUserConnected(isConnected))

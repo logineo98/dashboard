@@ -57,11 +57,10 @@ const ListeAdmin: PAGE_COMPONENT_TYPE = () => {
         { name: 'Rôle', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.role === 'ADMIN' ? 'Administrateur' : 'Supeur administrateur', sortable: true },
         { name: 'Connecté', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.id === admin.id ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Oui</span> : <span className='column' style={{ color: '#EF3E34' }}>Non</span>, sortable: true },
         { name: 'Statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.enabled ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>activé</span> : <span className='column' style={{ color: '#EF3E34' }}>non activé</span>, sortable: true },
-        // { name: 'Action', selector: (row: COLUMN_DATA_TABLE_TYPE) => <DisplayEditDelete row={row} title='admin' setValue={setValue} chooseAction={chooseAction} setChooseAction={setChooseAction} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} /> }
         {
             name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
                 <div className='display_edit_delete'>
-                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
+                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
                                 <div className='container_icon'> <AiOutlineEye /> </div>
