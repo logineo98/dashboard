@@ -6,7 +6,7 @@ import { RootReducerType } from '../../redux/store'
 
 const RouterIndex = () => {
     let { connected } = useSelector((state: RootReducerType) => state.user)
-    connected = true
+    // connected = true
 
     return (
         <Router>

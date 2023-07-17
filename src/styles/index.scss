@@ -4,6 +4,7 @@
 @import './utils/faux_secteurs';
 @import './utils/mixins';
 @import './settings';
+@import './leaflet';
 
 // importation pages
 @import './pages/page404';
@@ -19,3 +20,4 @@
 @import './components/add/add';
 @import './components/dashboard/dashboard';
 @import './components/listes/display_edit_delete';
+@import './components/assistance/assistance';

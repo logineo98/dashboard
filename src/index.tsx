@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 import './styles/index.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
 import 'reactjs-popup/dist/index.css'
+import 'leaflet/dist/leaflet.css'
 
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
