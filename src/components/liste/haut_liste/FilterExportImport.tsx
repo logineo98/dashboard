@@ -13,8 +13,6 @@ const FilterExportImport: PAGE_COMPONENT_TYPE = ({ title }) => {
         setDisplayFilter(false)
     }
 
-    console.log(title)
-
     return (
         <div className='filter_import_export_container'>
             <div className='filter_type_close'>

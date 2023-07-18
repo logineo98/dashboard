@@ -14,8 +14,7 @@ const NumberElement: FC<NUMBER_ELEMENT_DASHBOARD_TYPE> = ({ title, icon, name, l
 
             <div className='name_number'>
                 <p className='name'> {name} </p>
-                {/* <p className='number'> {title === 'actu' ? allStats?.actu : title === 'info' ? allStats?.info : title === 'user' ? allStats?.user : title === 'admin' ? allStats?.admin : 'Inconnu'} </p> */}
-                <p className='number'> {title === 'actu' ? 1 : title === 'info' ? 1 : title === 'user' ? 2 : title === 'admin' ? 2 : 'Inconnu'} </p>
+                <p className='number'> {title === 'actu' ? allStats?.actu : title === 'info' ? allStats?.info : title === 'user' ? allStats?.user : title === 'admin' ? allStats?.admin : title === 'devis' ? allStats?.devis : 'Inconnu'} </p>
             </div>
         </Link>
     )

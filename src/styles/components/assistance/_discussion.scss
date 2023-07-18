@@ -1,6 +1,63 @@
 .discussion {
-    @include h_w($h: calc(100vh - (60px + 10px + 40px + 10px + 60px)), $w: 29%);
+    @include h_w($h: calc(100vh - rem-calc(180)), $w: 29%);
     border: rem-calc(1) solid rgba($color: $black, $alpha: 0.2);
     border-radius: rem-calc(5);
     padding: rem-calc(5);
+    position: relative;
+
+    .user_icon_name_close_icon_container {
+        @include df($ai: center, $jc: space-between);
+        padding: rem-calc(5) 0;
+        border-bottom: rem-calc(1) solid rgba($color: $black, $alpha: 0.2);
+
+        .user_icon_name {
+            @include df($ai: center);
+
+            .user_icon {
+                font-size: rem-calc(25);
+            }
+
+            .name {
+                margin-left: rem-calc(5);
+            }
+        }
+
+        .close_icon {
+            font-size: rem-calc(25);
+            cursor: pointer;
+        }
+    }
+
+    .discussion_container {
+        position: relative;
+        padding: rem-calc(5) 0;
+        height: calc(100% - rem-calc(41));
+
+        form.send_response {
+            @include pos-abs-b-l();
+            @include h-w($w: 100%);
+
+            input {
+                @include h-w(rem-calc(45), 100%);
+                border-radius: rem-calc(8);
+                border: rem-calc(1) solid $light;
+                font-size: rem-calc(16);
+                padding-left: rem-calc(15);
+                padding-right: rem-calc(45);
+
+                &:focus {
+                    outline: none;
+                    border: rem-calc(1) solid $sb-active;
+
+                    &~.icon {
+                        color: $sb-active;
+                    }
+                }
+
+                &::placeholder {
+                    color: $edm-sa-color;
+                }
+            }
+        }
+    }
 }

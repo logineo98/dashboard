@@ -1,8 +1,10 @@
 // export const api_img = 'http://165.227.91.20:9000'
 // export const api = 'http://192.168.50.52:8080/api/v1'
 
+// export const api_img = 'https://edm-files.mylogineo.com'
+// export const api = 'https://edm.mylogineo.com/api/v1'
 export const api_img = 'https://edm-files.mylogineo.com'
-export const api = 'https://edm.mylogineo.com/api/v1'
+export const api = 'http://192.168.50.50:8080/api/v1'
 export const auth = `${api}/auth`
 export const api_user = `${api}/users`
 export const api_news = `${api}/actualites`
@@ -12,6 +14,9 @@ export const api_devis = `${api}/devis`
 export const api_invoice = `${api}/invoices`
 export const api_isago = `${api}/isago`
 export const api_stat = `${api}/stats/count`
+export const api_stat_devis = `${api}/stats/count-devis`
+export const api_stat_post_paid = `${api}/stats/count-postpaid`
+export const api_stat_isago = `${api}/stats/count-prepaid`
 
 // admin auth
 export const LOADING_USER: string = 'LOADING_USER'
@@ -82,6 +87,17 @@ export const ERROR_STAT: string = 'ERROR_STAT'
 export const GET_ALL_STATS: string = 'GET_ALL_STATS'
 
 // statistique by year
-export const LOADING_STAT_BY_YEAR: string = 'LOADING_STAT_BY_YEAR'
-export const ERROR_STAT_BY_YEAR: string = 'ERROR_STAT_BY_YEAR'
-export const GET_ALL_STATS_BY_YEAR: string = 'GET_ALL_STATS_BY_YEAR'
+// DEVIS
+export const LOADING_STAT_DEVIS_BY_YEAR: string = 'LOADING_STAT_DEVIS_BY_YEAR'
+export const ERROR_STAT_DEVIS_BY_YEAR: string = 'ERROR_STAT_DEVIS_BY_YEAR'
+export const GET_ALL_STATS_DEVIS_BY_YEAR: string = 'GET_ALL_STATS_DEVIS_BY_YEAR'
+
+// POST PAID
+export const LOADING_STAT_POST_PAY_BY_YEAR: string = 'LOADING_STAT_POST_PAY_BY_YEAR'
+export const ERROR_STAT_POST_PAY_BY_YEAR: string = 'ERROR_STAT_POST_PAY_BY_YEAR'
+export const GET_ALL_STATS_POST_PAY_BY_YEAR: string = 'GET_ALL_STATS_POST_PAY_BY_YEAR'
+
+// PRE PAID
+export const LOADING_STAT_PRE_PAY_BY_YEAR: string = 'LOADING_STAT_PRE_PAY_BY_YEAR'
+export const ERROR_STAT_PRE_PAY_BY_YEAR: string = 'ERROR_STAT_PRE_PAY_BY_YEAR'
+export const GET_ALL_STATS_PRE_PAY_BY_YEAR: string = 'GET_ALL_STATS_PRE_PAY_BY_YEAR'

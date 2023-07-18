@@ -4,10 +4,11 @@ import { Pie } from 'react-chartjs-2'
 import { useSelector } from 'react-redux'
 import { RootReducerType } from '../../../redux/store'
 import Loading from '../../loading/Loading'
+import { PAGE_COMPONENT_TYPE } from '../../../utils/types'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const Circle = () => {
+const Circle: PAGE_COMPONENT_TYPE = ({ title }) => {
 
     const { allStats, loadingStat } = useSelector((state: RootReducerType) => state.stat)
 
@@ -28,17 +29,23 @@ const Circle = () => {
         labels: ['Payé', 'Annulé', 'En cours'],
         datasets: [
             {
-                label: 'Nombre de factures',
-                // data: [
-                //     allStats?.payment.success ? allStats?.payment.success : 0,
-                //     allStats?.payment.pending ? allStats?.payment.pending : 0,
-                //     allStats?.payment.failure ? allStats?.payment.failure : 0
-                // ],
-                data: [
-                    5,
-                    10,
-                    6
-                ],
+                label: title === 'devis' ? 'Nombre de devis' : 'Nombre de paiements',
+                data: title === 'devis' ?
+                    [
+                        allStats?.devisPayment?.success,
+                        allStats?.devisPayment?.pending,
+                        allStats?.devisPayment?.failure
+                    ] : title === 'post_pay' ?
+                        [
+                            allStats?.postPaidPayment?.success,
+                            allStats?.postPaidPayment?.pending,
+                            allStats?.postPaidPayment?.failure
+                        ] : title === 'pre_pay' ?
+                            [
+                                allStats?.prePaidPayment?.success,
+                                allStats?.prePaidPayment?.pending,
+                                allStats?.prePaidPayment?.failure
+                            ] : [],
                 backgroundColor: [
                     'rgb(6, 161, 6, 0.4)',
                     'rgba(239, 62, 52, 0.4)',

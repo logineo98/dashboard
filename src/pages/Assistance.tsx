@@ -5,7 +5,6 @@ import { page_assistance } from '../utils/name_page'
 import Map from '../components/assistance/Map'
 import Discussion from '../components/assistance/Discussion'
 
-
 const Assistance = () => {
 
     useEffect(() => {

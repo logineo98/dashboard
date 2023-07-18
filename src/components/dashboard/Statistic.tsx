@@ -1,13 +1,14 @@
 import React from 'react'
 import Circle from './statistic/Circle'
 import Vertical from './statistic/Vertical'
+import { PAGE_COMPONENT_TYPE } from '../../utils/types'
 
-const Statistic = () => {
+const Statistic: PAGE_COMPONENT_TYPE = ({ title }) => {
     return (
         <div className='statistic'>
-            <Circle />
+            <Circle title={title} />
 
-            <Vertical />
+            <Vertical title={title} />
         </div>
     )
 }

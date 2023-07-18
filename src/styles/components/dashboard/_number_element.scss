@@ -5,7 +5,7 @@
     .container {
         background: $white;
         padding: rem-calc(20) rem-calc(10);
-        flex-basis: 24%;
+        flex-basis: 19%;
         @include df($ai: center);
         border-radius: rem-calc(10);
         box-shadow: 0 rem-calc(2) rem-calc(4) rgba(0, 0, 0, 0.1);
