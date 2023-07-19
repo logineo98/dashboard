@@ -1,9 +1,9 @@
-// export const api_img = 'http://165.227.91.20:9000'
+export const api_img = 'http://192.168.50.50:9000'
 // export const api = 'http://192.168.50.52:8080/api/v1'
 
 // export const api_img = 'https://edm-files.mylogineo.com'
 // export const api = 'https://edm.mylogineo.com/api/v1'
-export const api_img = 'https://edm-files.mylogineo.com'
+// export const api_img = 'https://edm-files.mylogineo.com'
 export const api = 'http://192.168.50.50:8080/api/v1'
 export const auth = `${api}/auth`
 export const api_user = `${api}/users`
@@ -39,6 +39,7 @@ export const GET_ALL_USERS: string = 'GET_ALL_USERS'
 export const EDIT_ADMIN: string = 'EDIT_ADMIN'
 export const DELETE_ADMIN: string = 'DELETE_ADMIN'
 export const ACTIVE_ADMIN_USER: string = 'ACTIVE_ADMIN_USER'
+export const FILTER_CLIENT: string = 'FILTER_CLIENT'
 
 // new
 export const LOADING_NEWS: string = 'LOADING_NEWS'
@@ -70,16 +71,19 @@ export const LOADING_DEVIS: string = 'LOADING_DEVIS'
 export const ERROR_DEVIS: string = 'ERROR_DEVIS'
 export const GET_ALL_DEVIS: string = 'GET_ALL_DEVIS'
 export const VALIDATE_DEVIS: string = 'VALIDATE_DEVIS'
+export const FILTER_DEVIS: string = 'FILTER_DEVIS'
 
 // facutre post-pay
 export const LOADING_POST_PAY: string = 'LOADING_POST_PAY'
 export const ERROR_POST_PAY: string = 'ERROR_POST_PAY'
 export const GET_ALL_POST_PAYS: string = 'GET_ALL_POST_PAYS'
+export const FILTER_POST_PAY: string = 'FILTER_POST_PAY'
 
 // facutre pre-pay
 export const LOADING_PRE_PAY: string = 'LOADING_PRE_PAY'
 export const ERROR_PRE_PAY: string = 'ERROR_PRE_PAY'
 export const GET_ALL_PRE_PAYS: string = 'GET_ALL_PRE_PAYS'
+export const FILTER_PRE_PAY: string = 'FILTER_PRE_PAY'
 
 // statistique
 export const LOADING_STAT: string = 'LOADING_STAT'

@@ -1,6 +1,5 @@
 import React from 'react'
 import { PAGE_COMPONENT_TYPE } from '../../../utils/types'
-import ActionFiltre from './ActionFiltre'
 import Commun from './Commun'
 import Stats from './Stats'
 import FilterExportImport from './FilterExportImport'

@@ -36,8 +36,8 @@ const ListeFacturePostPayAndPrePay: PAGE_COMPONENT_TYPE = ({ title }) => {
         // { name: 'Le numéro de retrait OM', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.phone, sortable: true },
         { name: 'Montant total (FCFA)', selector: (row: COLUMN_DATA_TABLE_TYPE) => formatNumberWithSpaces(row.amountToBePaid), sortable: true },
         { name: 'Montant payé (FCFA)', selector: (row: COLUMN_DATA_TABLE_TYPE) => formatNumberWithSpaces(row.amountPaid), sortable: true },
-        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         { name: 'Payement statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.status === 'PENDING' ? <span className='column' style={{ color: '#d4a005' }}>En cours</span> : row.status === 'CANCELED' ? <span className='column' style={{ color: '#EF3E34' }}>Annulé</span> : <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Payé</span> },
+        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         {
             name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
                 <div className='display_edit_delete'>
@@ -58,8 +58,8 @@ const ListeFacturePostPayAndPrePay: PAGE_COMPONENT_TYPE = ({ title }) => {
         // { name: 'Le numéro de retrait OM', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.phone, sortable: true },
         { name: 'Numéro compteur', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.compteur, sortable: true },
         { name: 'Montant payé (FCFA)', selector: (row: COLUMN_DATA_TABLE_TYPE) => formatNumberWithSpaces(row.amount), sortable: true },
-        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         { name: 'Payement statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.status === 'PENDING' ? <span className='column' style={{ color: '#d4a005' }}>En cours</span> : row.status === 'CANCELED' ? <span className='column' style={{ color: '#EF3E34' }}>Annulé</span> : <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Payé</span> },
+        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         {
             name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
                 <div className='display_edit_delete'>

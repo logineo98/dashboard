@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify'
-import { ERROR_DEVIS, GET_ALL_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS, api_devis } from '../constants'
+import { ERROR_DEVIS, FILTER_DEVIS, GET_ALL_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS, api_devis } from '../constants'
 import axios from 'axios'
 import { VALIDATION_DEVIS_TYPE } from '../../utils/types'
 
@@ -35,6 +35,19 @@ export const validateDevis = (id: string, data: VALIDATION_DEVIS_TYPE, setSeeMod
         setValidationDevisData({ amount: '', motif: '', status: '' })
 
         dispatch({ type: VALIDATE_DEVIS, payload: { id, data: response.data } })
+    } catch (error: any) {
+        toast.error(error?.response?.data?._embedded?.errors[0]?.message)
+        dispatch({ type: ERROR_DEVIS, payload: error?.response?.data?._embedded?.errors[0]?.message })
+    }
+}
+
+export const filterDevis = (data: { status?: string | null, paymentStatus?: string | null, begin?: string | null, end?: string | null }) => async (dispatch: any) => {
+    try {
+        dispatch(LoadingDevis())
+
+        const response = await axios.post(`${api_devis}/filter`, data, { headers: { Authorization: `Bearer ${token}` } })
+
+        dispatch({ type: FILTER_DEVIS, payload: response.data })
     } catch (error: any) {
         toast.error(error?.response?.data?._embedded?.errors[0]?.message)
         dispatch({ type: ERROR_DEVIS, payload: error?.response?.data?._embedded?.errors[0]?.message })
