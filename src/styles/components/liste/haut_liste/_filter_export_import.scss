@@ -1,0 +1,100 @@
+.filter_import_export_container {
+    margin: rem-calc(10) 0;
+    @include df($ai: center, $jc: space-between);
+    position: relative;
+
+    .filter_type_close {
+        @include df($ai: center);
+
+        .filter_container {
+            @include bouton-top-data-table();
+        }
+
+        .type_filter_close {
+            @include df($ai: center, $jc: space-between);
+            margin-left: rem-calc(10);
+
+            .type {
+                font-size: rem-calc(13);
+                padding: rem-calc(7);
+                border: rem-calc(1) solid rgba($color: $black, $alpha: 0.2);
+                border-radius: rem-calc(5);
+            }
+
+            .close_container {
+                @include bouton-top-data-table();
+                @include df($ai: center, $jc: center);
+                margin-left: rem-calc(10);
+            }
+        }
+    }
+
+    form.filter_form {
+        background: rgba($color: $gray, $alpha: 1);
+        z-index: 10;
+        @include pos-abs-t-l($t: - rem-calc(30), $l: rem-calc(30));
+        padding: rem-calc(10);
+        border-radius: rem-calc(5);
+        border: rem-calc(1) solid rgba($color: $black, $alpha: 0.5);
+
+        .input_select_container {
+            margin: 0 0 rem-calc(10);
+
+            select {
+                border-radius: rem-calc(4);
+                padding: rem-calc(7);
+                width: 100%;
+                outline: none;
+                border: none;
+
+                option {
+                    text-align: center;
+                }
+            }
+        }
+
+        .input_date_container {
+            @include df($ai: center);
+
+            input {
+                padding: rem-calc(7);
+                border-radius: rem-calc(4);
+                outline: none;
+                border: none;
+
+                &:last-child {
+                    margin-left: rem-calc(5);
+                }
+            }
+        }
+
+        .cancel_apply_container {
+            @include df($ai: center, $jc: space-between);
+            margin: rem-calc(10) 0 0;
+
+            .cancel {
+                @include bouton-top-data-table();
+                width: 48%;
+            }
+
+            .apply {
+                @include bouton-top-data-table();
+                margin-left: rem-calc(10);
+                width: 48%;
+            }
+        }
+    }
+
+    .import_export_container {
+        @include df($ai: center, $jc: center);
+
+        .exporter {
+            @include bouton-top-data-table();
+        }
+
+        .importer {
+            margin-left: rem-calc(10);
+            @include bouton-top-data-table();
+        }
+    }
+}

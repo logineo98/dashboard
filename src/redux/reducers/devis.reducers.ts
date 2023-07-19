@@ -1,7 +1,8 @@
-import { ERROR_DEVIS, GET_ALL_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS } from "../constants"
+import { ERROR_DEVIS, FILTER_DEVIS, GET_ALL_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS } from "../constants"
 
 const initialState = {
     allDevis: [] as any[],
+    devisFilter: false,
     loadingDevis: false,
     error: null
 }
@@ -17,7 +18,7 @@ const devisReducer = (state = initialState, action: { type: string, payload: any
             return { ...state, error: payload, loadingDevis: false }
 
         case GET_ALL_DEVIS:
-            return { ...state, allDevis: payload, loadingDevis: false, error: null }
+            return { ...state, allDevis: payload, devisFilter: false, loadingDevis: false, error: null }
 
         case VALIDATE_DEVIS:
             return {
@@ -29,6 +30,9 @@ const devisReducer = (state = initialState, action: { type: string, payload: any
                 }),
                 loadingDevis: false, error: null
             }
+
+        case FILTER_DEVIS:
+            return { ...state, allDevis: payload, devisFilter: true, loadingDevis: false, error: null }
 
         default:
             return state

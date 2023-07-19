@@ -1,0 +1,32 @@
+.vertical {
+    position: relative;
+    background: $white;
+    border-radius: rem-calc(10);
+    padding: rem-calc(20);
+    box-shadow: 0 rem-calc(2) rem-calc(4) rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 69%;
+
+    form {
+        @include df($ai: center);
+        height: rem-calc(30);
+
+        .select_btn {
+            height: 100%;
+            margin-left: rem-calc(5);
+            @include df($ai: center);
+
+            select {
+                @include input-select;
+            }
+        }
+    }
+
+    .loading_container {
+        @include pos-abs-t-r($t: rem-calc(10), $r: rem-calc(10));
+    }
+
+    .bar {
+        margin-top: rem-calc(10);
+    }
+}

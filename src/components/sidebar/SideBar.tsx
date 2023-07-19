@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { MdPayment, MdHistory, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown, MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { MdPayment, MdOutlineDashboardCustomize, MdOutlineAssistant, MdOutlineNewspaper, MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { RiInformationLine } from 'react-icons/ri'
-import { TbFileInvoice, TbTower } from 'react-icons/tb'
+import { TbFileInvoice } from 'react-icons/tb'
 import { GiSmartphone } from 'react-icons/gi'
+import { AiOutlineSetting } from 'react-icons/ai'
 
 const SideBar = () => {
     const { pathname } = useLocation()
@@ -12,8 +13,8 @@ const SideBar = () => {
         dashboard: pathname === '/' ? true : false,
         devis: pathname === '/list-devis' ? true : false,
         paiement: (pathname === '/list-credit-isago' || pathname === '/list-facture-post-pay') ? true : false,
+        setting: (pathname === '/admin' || pathname === '/town') ? true : false,
         historical: pathname === '/historical' ? true : false,
-        town: pathname === '/town' ? true : false,
         assistance: pathname === '/assistance' ? true : false,
         information: pathname === '/information' ? true : false,
         news: pathname === '/news' ? true : false,
@@ -32,7 +33,6 @@ const SideBar = () => {
                                 <MdOutlineDashboardCustomize className='icon' />
                                 <p>Tableau de bord</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
@@ -44,12 +44,11 @@ const SideBar = () => {
                                 <TbFileInvoice className='icon' />
                                 <p>Devis</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
 
-                <li className={menu.paiement ? 'container payment active' : 'payment container'}>
+                <li className={menu.paiement ? 'container sub_menu active' : 'sub_menu container'}>
                     <NavLink to='/list-facture-post-pay' className={({ isActive }) => { if (isActive || pathname === '/list-credit-isago') return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
                             <div className='titre-icon'>
@@ -65,30 +64,6 @@ const SideBar = () => {
                     </ul>
                 </li>
 
-                <li className={menu.town ? 'container active' : 'container'}>
-                    <NavLink to='/town' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
-                        <div className='titre-fleche'>
-                            <div className='titre-icon'>
-                                <TbTower className='icon' />
-                                <p>Villes</p>
-                            </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
-                        </div>
-                    </NavLink>
-                </li>
-
-                {/* <li className={menu.historical ? 'container active' : 'container'}>
-                    <NavLink to='/historical' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
-                        <div className='titre-fleche'>
-                            <div className='titre-icon'>
-                                <MdHistory className='icon' />
-                                <p>Historiques</p>
-                            </div>
-                            <MdOutlineKeyboardArrowRight className='fleche' />
-                        </div>
-                    </NavLink>
-                </li> */}
-
                 <li className={menu.assistance ? 'container active' : 'container'}>
                     <NavLink to='/assistance' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
@@ -96,7 +71,6 @@ const SideBar = () => {
                                 <MdOutlineAssistant className='icon' />
                                 <p>Assistances</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
@@ -108,7 +82,6 @@ const SideBar = () => {
                                 <RiInformationLine className='icon' />
                                 <p>Informations</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
@@ -120,7 +93,6 @@ const SideBar = () => {
                                 <MdOutlineNewspaper className='icon' />
                                 <p>Actualités</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
@@ -132,21 +104,24 @@ const SideBar = () => {
                                 <GiSmartphone className='icon' />
                                 <p>Clients mobiles</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
                         </div>
                     </NavLink>
                 </li>
 
-                <li className={menu.admin ? 'container active' : 'container'}>
-                    <NavLink to='/admin' className={({ isActive }) => { if (isActive) return 'menu_name active'; else return 'menu_name' }}>
+                <li className={menu.setting ? 'container sub_menu active' : 'sub_menu container'}>
+                    <NavLink to='/admin' className={({ isActive }) => { if (isActive || pathname === '/town') return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
                             <div className='titre-icon'>
-                                <MdOutlineAdminPanelSettings className='icon' />
-                                <p>Administrateurs</p>
+                                <AiOutlineSetting className='icon' />
+                                <p>Paramètres</p>
                             </div>
-                            {/* <MdOutlineKeyboardArrowRight className='fleche' /> */}
+                            {menu.setting ? <MdOutlineKeyboardArrowDown className='fleche' /> : <MdOutlineKeyboardArrowRight className='fleche' />}
                         </div>
                     </NavLink>
+                    <ul className='sous_menus'>
+                        <li><NavLink to='/admin' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Administrateurs</NavLink></li>
+                        <li><NavLink to='/town' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Villes</NavLink></li>
+                    </ul>
                 </li>
             </ul>
         </div>

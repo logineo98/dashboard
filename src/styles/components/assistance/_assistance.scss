@@ -1,0 +1,12 @@
+.map_discussion_container {
+    background: $white;
+    margin: rem-calc(20) 0;
+    padding: rem-calc(10);
+    box-shadow: 0 rem-calc(2) rem-calc(4) rgba(0, 0, 0, 0.1);
+    border-radius: rem-calc(5);
+    @include df($ai: center, $jc: space-between);
+
+
+    @import './map';
+    @import './discussion';
+}

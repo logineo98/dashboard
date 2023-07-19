@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN, api_user, auth } from '../constants'
+import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, FILTER_CLIENT, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN, api_user, auth } from '../constants'
 import { toast } from 'react-toastify'
 import { ADD_EDIT_ADMIN_TYPE, FORGET_PASSWORD_TYPE, PIN_TYPE } from '../../utils/types'
 
@@ -157,7 +157,7 @@ export const editAdmin = (data: ADD_EDIT_ADMIN_TYPE, setSeeModalDisplayEditDelet
     }
 }
 
-export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>, setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
+export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingUser())
 
@@ -165,7 +165,6 @@ export const deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Disp
 
         toast.success('L\'administrateur a été supprimé avec succès.')
 
-        setEmptyRowSelected && setEmptyRowSelected(true)
         setSeeModalDisplayEditDelete(false)
 
         dispatch({ type: DELETE_ADMIN, payload: { data: response.data, id } })
@@ -187,6 +186,19 @@ export const activeAdminOrUser = (id: string, oldStatus: boolean, setSeeModalDis
         setSeeModalDisplayEditDelete(false)
 
         dispatch({ type: ACTIVE_ADMIN_USER, payload: response.data })
+    } catch (error: any) {
+        toast.error(error?.response?.data?._embedded?.errors[0]?.message)
+        dispatch({ type: ERROR_USER, payload: error?.response?.data?._embedded?.errors[0]?.message })
+    }
+}
+
+export const filterClient = (data: { enable?: string | boolean | null }) => async (dispatch: any) => {
+    try {
+        dispatch(LoadingUser())
+
+        const response = await axios.post(`${api_user}/filter`, data, { headers: { Authorization: `Bearer ${token}` } })
+
+        dispatch({ type: FILTER_CLIENT, payload: response.data })
     } catch (error: any) {
         toast.error(error?.response?.data?._embedded?.errors[0]?.message)
         dispatch({ type: ERROR_USER, payload: error?.response?.data?._embedded?.errors[0]?.message })

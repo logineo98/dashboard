@@ -1,0 +1,17 @@
+.dashboard {
+    margin: 0 0 rem-calc(20) 0;
+    height: calc(100vh - (rem-calc(60) + rem-calc(40) + rem-calc(10) + rem-calc(20)));
+    overflow-y: auto;
+    padding: rem-calc(10) rem-calc(10) rem-calc(30) 0;
+
+    .info {
+        font-size: rem-calc(18);
+        font-weight: 700;
+        color: rgba($color: $black, $alpha: 0.7);
+        margin: rem-calc(15) 0;
+        height: rem-calc(30);
+    }
+
+    @import './number_element';
+    @import './statistic';
+}

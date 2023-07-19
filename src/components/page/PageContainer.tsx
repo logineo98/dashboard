@@ -6,6 +6,7 @@ import { isTokenExpired } from '../../utils/functions'
 import { isUserConnected } from '../../redux/actions/user.actions'
 import { useNavigate } from 'react-router-dom'
 import SideBar from '../sidebar/SideBar'
+import Copyright from './Copyright'
 
 const PageContainer: FC<{ children: JSX.Element }> = ({ children }) => {
     const navigate = useNavigate()
@@ -47,6 +48,8 @@ const PageContainer: FC<{ children: JSX.Element }> = ({ children }) => {
 
                 <div className='right_body'>
                     {children}
+
+                    {/* <Copyright /> */}
                 </div>
             </div>
         </div>

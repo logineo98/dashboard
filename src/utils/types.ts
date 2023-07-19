@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export type FORGET_PASSWORD_TYPE = {
     user: boolean
     choose: boolean
@@ -38,7 +40,8 @@ export type ADD_EDIT_NEWS_INFORMATION_TYPE = {
     id?: string
     title: string
     content: string
-    image: string | File
+    image?: string | File
+    url?: string
 }
 
 export type ListeType<T, K> = {
@@ -46,6 +49,15 @@ export type ListeType<T, K> = {
     datas: T[]
     columns: K[]
 }
+
+export type NUMBER_ELEMENT_DASHBOARD_TYPE = {
+    title: string
+    icon: ReactNode,
+    name: string,
+    link: string
+}
+
+export type STATISTIQUE_TYPE = { failure: number, pending: number, success: number }
 
 export type COLUMN_DATA_TABLE_TYPE = {
     id: string
@@ -116,7 +128,7 @@ export type COLUMN_DATA_TABLE_TYPE = {
     nbKw: string | string
     motif: string
     localisation: string
-    customer: { name: string, phone: string }
+    customer: { name: string, phone: string },
 }
 
 export type PAGE_COMPONENT_TYPE = (props: {

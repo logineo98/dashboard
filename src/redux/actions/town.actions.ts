@@ -69,7 +69,7 @@ export const editTown = (id: string | undefined, data: { name: string }, setSeeM
     }
 }
 
-export const deleteTown = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>, setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
+export const deleteTown = (id: string, setSeeModalDisplayEditDelete: React.Dispatch<React.SetStateAction<boolean>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingTown())
 
@@ -77,7 +77,6 @@ export const deleteTown = (id: string, setSeeModalDisplayEditDelete: React.Dispa
 
         toast.success('La ville a été supprimée avec succès.')
 
-        setEmptyRowSelected && setEmptyRowSelected(true)
         setSeeModalDisplayEditDelete(false)
 
         dispatch({ type: DELETE_TOWN, payload: { data: response.data, id } })

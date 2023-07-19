@@ -1,0 +1,3 @@
+.map {
+    @include h_w($h: calc(100vh - rem-calc(180)), $w: 70%);
+}

@@ -12,6 +12,10 @@ import townReducer from './reducers/town.reducers'
 import devisReducer from './reducers/devis.reducers'
 import postPayReducer from './reducers/post_pay.reducers'
 import prePayReducer from './reducers/pre_pay.reducers'
+import statReducer from './reducers/stat.reducers'
+import statDevisByYear from './reducers/stat_devis_by_year.reducers'
+import statPostPayByYear from './reducers/stat_post_pay_by_year.reducers'
+import statPrePayByYear from './reducers/stat_pre_pay_by_year.reducers'
 
 // regrouper tous les reducers
 const rootReducer = combineReducers({
@@ -21,7 +25,11 @@ const rootReducer = combineReducers({
     town: townReducer,
     devis: devisReducer,
     post_pay: postPayReducer,
-    pre_pay: prePayReducer
+    pre_pay: prePayReducer,
+    stat: statReducer,
+    statDevisByYear: statDevisByYear,
+    statPostPayByYear: statPostPayByYear,
+    statPrePayByYear: statPrePayByYear,
 })
 
 export type RootReducerType = ReturnType<typeof rootReducer>

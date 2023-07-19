@@ -1,5 +1,4 @@
-import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN } from "../constants"
-
+import { ACTIVE_ADMIN_USER, ADD_ADMIN, DELETE_ADMIN, EDIT_ADMIN, EMPTY_ERROR_USER, ERROR_USER, FILTER_CLIENT, GET_ADMIN, GET_ADMIN_BY_USERNAME_OR_PHONE, GET_ALL_ADMINS, GET_ALL_USERS, IS_CONNECTED, LOADING_USER, RESEND_CODE, RESET_FORGET, RESET_PASSWORD, SEND_PIN } from "../constants"
 
 const initialState = {
     connected: false,
@@ -12,6 +11,7 @@ const initialState = {
     passwordModifyForget: false,
     allAdmins: [] as any[],
     allUsers: [] as any[],
+    clientFilter: false,
     loadingUser: false,
     error: null
 }
@@ -76,7 +76,7 @@ const userReducer = (state = initialState, action: { type: string, payload: any 
             }
 
         case GET_ALL_USERS:
-            return { ...state, allUsers: payload, loadingUser: false, error: null }
+            return { ...state, allUsers: payload, clientFilter: false, loadingUser: false, error: null }
 
         case ACTIVE_ADMIN_USER:
             return {
@@ -93,6 +93,9 @@ const userReducer = (state = initialState, action: { type: string, payload: any 
                 }),
                 loadingUser: false, error: null
             }
+
+        case FILTER_CLIENT:
+            return { ...state, allUsers: payload, clientFilter: true, loadingUser: false, error: null }
 
         default:
             return state
