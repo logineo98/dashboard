@@ -1,5 +1,5 @@
 .discussion {
-    @include h_w($h: calc(100vh - rem-calc(180)), $w: 29%);
+    @include h_w($h: calc(100vh - rem-calc(180)), $w: 0%);
     border: rem-calc(1) solid rgba($color: $black, $alpha: 0.2);
     border-radius: rem-calc(5);
     padding: rem-calc(5);
@@ -15,30 +15,66 @@
 
             .user_icon {
                 font-size: rem-calc(25);
+                color: $sb-ic-txt-color;
             }
 
             .name {
                 margin-left: rem-calc(5);
+                color: $sb-ic-txt-color;
             }
         }
 
         .close_icon {
             font-size: rem-calc(25);
             cursor: pointer;
+            color: $sb-ic-txt-color;
         }
     }
 
     .discussion_container {
         position: relative;
         padding: rem-calc(5) 0;
-        height: calc(100% - rem-calc(41));
+        height: calc(100% - rem-calc(40));
+
+        .message_container {
+            height: calc(100% - rem-calc(40));
+            overflow-y: auto;
+
+            .message {
+                background: rgba($color: $sb-ic-txt-color, $alpha: 0.9);
+                width: 90%;
+                padding: rem-calc(5);
+                border-radius: rem-calc(5);
+                margin-bottom: rem-calc(5);
+
+                .msg {
+                    font-size: rem-calc(14);
+                    color: $white;
+                }
+
+                .hour {
+                    text-align: right;
+                    font-size: rem-calc(14);
+                    color: $white;
+                }
+
+                &.own {
+                    background: rgba($color: $success-color, $alpha: 0.9);
+                    margin-left: 10%;
+
+                    .hour {
+                        color: $black;
+                    }
+                }
+            }
+        }
 
         form.send_response {
             @include pos-abs-b-l();
             @include h-w($w: 100%);
 
             input {
-                @include h-w(rem-calc(45), 100%);
+                @include h-w(rem-calc(40), 100%);
                 border-radius: rem-calc(8);
                 border: rem-calc(1) solid $light;
                 font-size: rem-calc(16);
@@ -58,6 +94,22 @@
                     color: $edm-sa-color;
                 }
             }
+
+            button {
+                border: none;
+                background: transparent;
+                @include pos-abs-b-r($b: rem-calc(5), $r: rem-calc(15));
+                cursor: pointer;
+
+                .send_icon {
+                    font-size: rem-calc(20);
+                    color: $sb-ic-txt-color;
+                }
+            }
         }
+    }
+
+    &.display {
+        width: 29%;
     }
 }

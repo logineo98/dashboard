@@ -39,8 +39,9 @@ const ListeFacturePostPayAndPrePay: PAGE_COMPONENT_TYPE = ({ title }) => {
         { name: 'Payement statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.status === 'PENDING' ? <span className='column' style={{ color: '#d4a005' }}>En cours</span> : row.status === 'CANCELED' ? <span className='column' style={{ color: '#EF3E34' }}>Annulé</span> : <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Payé</span> },
         { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
@@ -61,8 +62,9 @@ const ListeFacturePostPayAndPrePay: PAGE_COMPONENT_TYPE = ({ title }) => {
         { name: 'Payement statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.status === 'PENDING' ? <span className='column' style={{ color: '#d4a005' }}>En cours</span> : row.status === 'CANCELED' ? <span className='column' style={{ color: '#EF3E34' }}>Annulé</span> : <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Payé</span> },
         { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>

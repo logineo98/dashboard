@@ -6,7 +6,7 @@ const initialState = {
     error: null
 }
 
-const statDevisByYear = (state = initialState, action: { type: string, payload: any }) => {
+const statDevisByYearReducer = (state = initialState, action: { type: string, payload: any }) => {
     const { type, payload } = action
 
     switch (type) {
@@ -24,4 +24,4 @@ const statDevisByYear = (state = initialState, action: { type: string, payload: 
     }
 }
 
-export default statDevisByYear
+export default statDevisByYearReducer

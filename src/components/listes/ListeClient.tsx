@@ -39,8 +39,9 @@ const ListeClient: PAGE_COMPONENT_TYPE = () => {
         { name: 'Rôle', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.role === 'CUSTOMER' ? 'Client' : '', sortable: true },
         { name: 'Statut', cell: (row: COLUMN_DATA_TABLE_TYPE) => row.enabled ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>activé</span> : <span className='column' style={{ color: '#EF3E34' }}>non activé</span>, sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>

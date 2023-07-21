@@ -6,7 +6,7 @@ const initialState = {
     error: null
 }
 
-const statPrePayByYear = (state = initialState, action: { type: string, payload: any }) => {
+const statPrePayByYearRducer = (state = initialState, action: { type: string, payload: any }) => {
     const { type, payload } = action
 
     switch (type) {
@@ -24,4 +24,4 @@ const statPrePayByYear = (state = initialState, action: { type: string, payload:
     }
 }
 
-export default statPrePayByYear
+export default statPrePayByYearRducer

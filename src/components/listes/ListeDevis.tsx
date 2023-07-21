@@ -7,7 +7,7 @@ import { displayDate } from '../../utils/functions'
 import DevisModal from '../liste/modal_display_edit_delete/DevisModal'
 import Popup from 'reactjs-popup'
 import { AiOutlineEye } from 'react-icons/ai'
-import { BsThreeDotsVertical } from 'react-icons/bs'
+import { BsCheckCircle, BsThreeDotsVertical } from 'react-icons/bs'
 
 const ListeDevis = () => {
 
@@ -42,8 +42,9 @@ const ListeDevis = () => {
         { name: 'Statut paiement', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.paymentStatus === 'PENDING' ? <span style={{ color: '#d4a005' }} className='column'>En attente</span> : row.paymentStatus === 'CANCELED' ? <span style={{ color: '#EF3E34' }} className='column'>Annulé</span> : row.paymentStatus === 'PAID' ? <span style={{ color: 'rgb(6, 161, 6)' }} className='column'>Payé</span> : 'Inconnu', sortable: true },
         { name: 'date', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='bottom center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
@@ -52,7 +53,7 @@ const ListeDevis = () => {
                             </div>
 
                             <div className='container' onClick={() => handleDisplay('valider', row)}>
-                                <div className='container_icon'>  </div>
+                                <div className='container_icon'> <BsCheckCircle /> </div>
                                 <div className='container_name'>Valider</div>
                             </div>
                         </div>
