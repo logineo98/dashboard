@@ -140,10 +140,12 @@ export type PAGE_COMPONENT_TYPE = (props: {
     nbSelectedRow?: number
     ElementSelected?: Array<COLUMN_DATA_TABLE_TYPE>
     emptyRowSelected?: boolean
+    displayDiscussion?: boolean
     setSeeAdminAdmin?: React.Dispatch<React.SetStateAction<boolean>>
     setSeeAddNewsInformation?: React.Dispatch<React.SetStateAction<boolean>>
     setSeeAddTown?: React.Dispatch<React.SetStateAction<boolean>>
     setElementSelected?: React.Dispatch<React.SetStateAction<COLUMN_DATA_TABLE_TYPE[]>>
     setSearch?: React.Dispatch<React.SetStateAction<string>>
     setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>
+    setDisplayDiscussion?: React.Dispatch<React.SetStateAction<boolean>>
 }) => JSX.Element

@@ -39,12 +39,13 @@ const ListeNewsInformation: PAGE_COMPONENT_TYPE = ({ title }) => {
 
     const columns = [
         { name: '#', selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
-        { name: 'Titre', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.title.length < 50 ? row.title : row.title.substring(0, 50) + '...', sortable: true },
-        { name: 'Contenu', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.content.length < 50 ? row.content : row.content.substring(0, 50) + '...', sortable: true },
-        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row.updatedAt), sortable: true },
+        { name: 'Titre', selector: (row: COLUMN_DATA_TABLE_TYPE) => row?.title?.length < 50 ? row?.title : row?.title?.substring(0, 50) + '...', sortable: true },
+        { name: 'Contenu', selector: (row: COLUMN_DATA_TABLE_TYPE) => row?.content.length < 50 ? row?.content : row?.content?.substring(0, 50) + '...', sortable: true },
+        { name: 'Dernière modification', selector: (row: COLUMN_DATA_TABLE_TYPE) => displayDate(row?.updatedAt), sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>

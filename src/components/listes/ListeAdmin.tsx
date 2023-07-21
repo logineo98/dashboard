@@ -58,9 +58,10 @@ const ListeAdmin: PAGE_COMPONENT_TYPE = () => {
         { name: 'Connecté', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.id === admin.id ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>Oui</span> : <span className='column' style={{ color: '#EF3E34' }}>Non</span>, sortable: true },
         { name: 'Statut', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.enabled ? <span className='column' style={{ color: 'rgb(6, 161, 6)' }}>activé</span> : <span className='column' style={{ color: '#EF3E34' }}>non activé</span>, sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
-                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top center'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
+                    <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top right'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
                                 <div className='container_icon'> <AiOutlineEye /> </div>

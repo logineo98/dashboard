@@ -39,8 +39,9 @@ const ListeTown: PAGE_COMPONENT_TYPE = () => {
         { name: '#', selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
         { name: 'Nom de la ville', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
         {
-            name: 'Action', cell: (row: COLUMN_DATA_TABLE_TYPE) => (
-                <div className='display_edit_delete'>
+            name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
+            cell: (row: COLUMN_DATA_TABLE_TYPE) => (
+                <div className='display_edit_delete' style={{ width: '100%', textAlign: 'center' }}>
                     <Popup arrow={false} trigger={<span className='vertical_icon_container'><BsThreeDotsVertical className='vertical_icon' /></span>} position='top center'>
                         <div className='display_edit_delete_container'>
                             <div className='container' onClick={() => handleDisplay('afficher', row)}>
