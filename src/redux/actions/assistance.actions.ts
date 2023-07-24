@@ -34,13 +34,13 @@ export const getAssistance = (id: string) => async (dispatch: any) => {
     }
 }
 
-export const replyAssistance = (id: string, data: { response: string }) => async (dispatch: any) => {
+export const replyAssistance = (id: string, data: { response: string }, setMsg: React.Dispatch<React.SetStateAction<string>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingAssistance())
 
         const response = await axios.post(`${api_assistance}/${id}`, data, { headers: { Authorization: `Bearer ${token}` } })
 
-        console.log(response.data)
+        setMsg('')
         dispatch({ type: REPLY_ASSISTANCE, payload: response.data })
     } catch (error: any) {
         toast.error(error?.response?.data?._embedded?.errors[0]?.message)

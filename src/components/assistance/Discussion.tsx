@@ -12,13 +12,13 @@ const Discussion: PAGE_COMPONENT_TYPE = ({ displayDiscussion, setDisplayDiscussi
 
     const [msg, setMsg] = useState('')
 
-    const { assistance, responseAssistance } = useSelector((state: RootReducerType) => state.assistance)
+    const { assistance } = useSelector((state: RootReducerType) => state.assistance)
     const dispatch = useDispatch<any>()
 
     const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        assistance.id && dispatch(replyAssistance(assistance.id, { response: msg }))
+        assistance.id && dispatch(replyAssistance(assistance.id, { response: msg }, setMsg))
     }
     return (
         displayDiscussion ?
@@ -44,7 +44,7 @@ const Discussion: PAGE_COMPONENT_TYPE = ({ displayDiscussion, setDisplayDiscussi
                         {assistance?.response &&
                             <div className='message own'>
                                 <p className='msg'> {assistance?.response} </p>
-                                <p className='hour'>{displayDate(new Date(assistance?.createdAt).getTime())}</p>
+                                <p className='hour'>{displayDate(new Date(assistance?.updatedAt).getTime())}</p>
                             </div>
                         }
                     </div>

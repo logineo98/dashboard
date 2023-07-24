@@ -4,7 +4,6 @@ const initialState = {
     allAssistances: [] as any[],
     loadingAssistance: false,
     assistance: null,
-    responseAssistance: null,
     error: null
 }
 
@@ -25,7 +24,7 @@ const assistanceReducer = (state = initialState, action: { type: string, payload
             return { ...state, assistance: payload, loadingAssistance: false, error: null }
 
         case REPLY_ASSISTANCE:
-            return { ...state, responseAssistance: payload, loadingAssistance: false, error: null }
+            return { ...state, assistance: payload, loadingAssistance: false, error: null }
 
         default:
             return state

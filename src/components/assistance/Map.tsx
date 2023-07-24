@@ -22,7 +22,7 @@ const Map: PAGE_COMPONENT_TYPE = ({ displayDiscussion, setDisplayDiscussion }) =
                 {allAssistances?.map((assistance: any) => (
                     <Marker key={assistance?.id} position={[assistance?.latitude, assistance?.longitude]} icon={customIcon} >
                         <Popup>
-                            <div style={{ cursor: 'pointer' }} onClick={() => { setDisplayDiscussion && setDisplayDiscussion(prev => !prev); dispatch(getAssistance(assistance?.id)) }}>
+                            <div style={{ cursor: 'pointer' }} onClick={() => { setDisplayDiscussion && setDisplayDiscussion(true); dispatch(getAssistance(assistance?.id)) }}>
                                 <span> {assistance?.customer?.name} </span> <br />
                                 <span> {assistance?.counter} </span>
                             </div>
