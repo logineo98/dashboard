@@ -149,7 +149,7 @@
             }
 
             .sous_menus {
-                height: rem-calc(0);
+                max-height: rem-calc(0);
                 overflow: hidden;
 
                 li {
@@ -203,7 +203,7 @@
     .menus {
         .container.sub_menu.active {
             .sous_menus {
-                height: rem-calc(70);
+                max-height: rem-calc(500);
 
                 li {
                     .lien.active {

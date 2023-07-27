@@ -87,6 +87,7 @@
 
     .import_export_container {
         @include df($ai: center, $jc: center);
+        position: relative;
 
         .exporter {
             @include bouton-top-data-table();
@@ -95,6 +96,52 @@
         .importer {
             margin-left: rem-calc(10);
             @include bouton-top-data-table();
+        }
+
+
+        form.import_devis {
+            @include pos-abs-t-r($t: - rem-calc(10), $r: rem-calc(75));
+            background: rgba($color: $gray, $alpha: 1);
+            padding: rem-calc(10);
+            border-radius: rem-calc(5);
+            border: rem-calc(1) solid rgba($color: $black, $alpha: 0.5);
+            z-index: 10;
+            width: rem-calc(250);
+
+            .input_file_container {
+                height: rem-calc(70);
+
+                label {
+                    display: inline-block;
+                    text-align: center;
+                    font-size: rem-calc(14);
+                    padding: rem-calc(10);
+                    cursor: pointer;
+                    @include h-w($h: rem-calc(52), $w: 100%);
+                    border: rem-calc(1) solid rgba($color: $black, $alpha: 0.5);
+                    border-radius: rem-calc(5);
+                }
+            }
+
+            .file_name_cancel {
+                @include df($ai: center, $jc: space-between);
+            }
+
+            .cancel_apply_container {
+                @include df($ai: center, $jc: space-between);
+                margin: rem-calc(10) 0 0;
+
+                .cancel {
+                    @include bouton-top-data-table();
+                    width: 48%;
+                }
+
+                .apply {
+                    @include bouton-top-data-table();
+                    margin-left: rem-calc(10);
+                    width: 48%;
+                }
+            }
         }
     }
 }

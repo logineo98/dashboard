@@ -17,7 +17,6 @@ const Vertical: PAGE_COMPONENT_TYPE = ({ title }) => {
     const [choosePostPayYear, setChoosePostPayYear] = useState(new Date().getFullYear().toString())
     const [choosePrePayYear, setChoosePrePayYear] = useState(new Date().getFullYear().toString())
 
-    const { connected } = useSelector((state: RootReducerType) => state.user)
     const { allStatsDevisByYear, loadingStatDevisByYear } = useSelector((state: RootReducerType) => state.statDevisByYear)
     const { allStatsPostPayByYear, loadingStatPostPayByYear } = useSelector((state: RootReducerType) => state.statPostPayByYear)
     const { allStatsPrePayByYear, loadingStatPrePayByYear } = useSelector((state: RootReducerType) => state.statPrePayByYear)
@@ -78,7 +77,7 @@ const Vertical: PAGE_COMPONENT_TYPE = ({ title }) => {
         dispatch(getAllStatsDevisByYear(chooseDevisYear))
         dispatch(getAllStatsPostPayByYear(choosePostPayYear))
         dispatch(getAllStatsPrePayByYear(choosePrePayYear))
-    }, [])
+    }, [dispatch, chooseDevisYear, choosePostPayYear, choosePrePayYear])
 
     return (
         <div className='vertical'>

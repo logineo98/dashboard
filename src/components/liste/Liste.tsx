@@ -38,7 +38,9 @@ const Liste = (props: ListeType<any, any>) => {
             data?.compteur?.toLowerCase().match(search.toLocaleLowerCase()) ||
             data?.address?.toLowerCase().match(search.toLocaleLowerCase()) ||
             data?.title?.toLowerCase().match(search.toLocaleLowerCase()) ||
-            data?.content?.toLowerCase().match(search.toLocaleLowerCase())
+            data?.content?.toLowerCase().match(search.toLocaleLowerCase()) ||
+            data?.city?.name?.toLowerCase().match(search.toLocaleLowerCase()) ||
+            data?.commune?.name?.toLowerCase().match(search.toLocaleLowerCase())
         )
 
         setFilteredDataSearch(result)

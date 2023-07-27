@@ -34,7 +34,8 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const { error, initialError } = validation_news(editNewsInformationData)
+        const { error, initialError } = title === 'news' ? validation_news(false, editNewsInformationData) : validation_news(true, editNewsInformationData)
+
 
         if (error.content !== initialError.content || error.image !== initialError.image || error.title !== initialError.title) {
             setErr(error)

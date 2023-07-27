@@ -1,6 +1,6 @@
 import { regex, upload_files } from './constant';
 import { deleteSeparator } from './functions';
-import { ADD_EDIT_ADMIN_TYPE, ADD_EDIT_NEWS_INFORMATION_TYPE, ADD_EDIT_TOWN_TYPE, VALIDATION_DEVIS_TYPE } from './types';
+import { ADD_EDIT_ADMIN_TYPE, ADD_EDIT_COMMUNE_TYPE, ADD_EDIT_NEWS_INFORMATION_TYPE, ADD_EDIT_QUARTER_TYPE, ADD_EDIT_TOWN_TYPE, VALIDATION_DEVIS_TYPE } from './types';
 
 export const validation_add_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
     const { email, name, password, password_confirm, phone, username } = props
@@ -92,10 +92,12 @@ export const validation_edit_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
     return { error, initialError }
 }
 
-export const validation_news = (props: ADD_EDIT_NEWS_INFORMATION_TYPE) => {
-    const { content, image, title } = props
-    const initialError: ADD_EDIT_NEWS_INFORMATION_TYPE = { content: '', image: '', title: '' }
+export const validation_news = (info: boolean, props: ADD_EDIT_NEWS_INFORMATION_TYPE) => {
+    const { content, image, title, type, diffusionItems } = props
+    const initialError: ADD_EDIT_NEWS_INFORMATION_TYPE = { content: '', image: '', title: '', type: '', diffusionItems: '' }
     let error = initialError
+
+    console.log(props)
 
     if (image) {
         if (typeof image !== 'string') {
@@ -105,6 +107,13 @@ export const validation_news = (props: ADD_EDIT_NEWS_INFORMATION_TYPE) => {
                 error = { ...error, image: 'La taille du fichier ne doit pas depasser 1 Mo' }
             }
         }
+    }
+
+    if (info) {
+        if (!type || type.trim() === '') error = { ...error, type: 'Veuillez sélectionner une cible' }
+
+
+        if (!diffusionItems || (diffusionItems as string).trim() === '') error = { ...error, diffusionItems: 'Veuillez faire au moins un choix' }
     }
 
     if (!title || title.trim() === '') error = { ...error, title: 'Veuillez renseigner le champ.' }
@@ -138,6 +147,28 @@ export const validation_devis = (props: VALIDATION_DEVIS_TYPE) => {
         if (!motif || motif.trim() === '') error = { ...error, amount: '', motif: 'Veuillez renseigner le champ.', status: '' }
         else if (motif.length > 255) error = { ...error, amount: '', motif: 'Doit être inférieur ou égal à 255 caractères.', status: '' }
     }
+
+    return { error, initialError }
+}
+
+export const validation_add_commune = (props: ADD_EDIT_COMMUNE_TYPE) => {
+    const { cityId, name } = props
+    const initialError: ADD_EDIT_COMMUNE_TYPE = { cityId: '', name: '' }
+    let error = initialError
+
+    if (!name || name.trim() === '') error = { ...error, name: 'Veuillez renseigner le champ.' }
+    if (!cityId) error = { ...error, cityId: 'Veuillez sélectionner une ville.' }
+
+    return { error, initialError }
+}
+
+export const validation_add_quarter = (props: ADD_EDIT_QUARTER_TYPE) => {
+    const { communeId, name } = props
+    const initialError: ADD_EDIT_QUARTER_TYPE = { communeId: '', name: '' }
+    let error = initialError
+
+    if (!name || name.trim() === '') error = { ...error, name: 'Veuillez renseigner le champ.' }
+    if (!communeId) error = { ...error, communeId: 'Veuillez sélectionner une commune.' }
 
     return { error, initialError }
 }

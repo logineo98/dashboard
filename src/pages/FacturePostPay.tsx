@@ -23,7 +23,7 @@ const FacturePostPay = () => {
     return (
         <PageContainer>
             <div className='right_container'>
-                <TitreAjout title='Factures post-payés' />
+                <TitreAjout title='Factures POST PAID' />
 
                 <ListeFacturePostPayAndPrePay title='post_pay' />
             </div>

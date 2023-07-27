@@ -6,7 +6,7 @@ import { RootReducerType } from '../../../redux/store'
 import { api_img } from '../../../redux/constants'
 import { deleteSeparator, formatNumberInput, formatNumberWithSpaces } from '../../../utils/functions'
 import { validation_devis } from '../../../utils/validation'
-import { validateDevis } from '../../../redux/actions/deivs.actions'
+import { validateDevis } from '../../../redux/actions/devis.actions'
 import { toast } from 'react-toastify'
 
 // importation icons

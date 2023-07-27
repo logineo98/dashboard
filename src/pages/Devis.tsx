@@ -5,7 +5,7 @@ import ListeDevis from '../components/listes/ListeDevis'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducerType } from '../redux/store'
 import { page_devis } from '../utils/name_page'
-import { getAllDevis } from '../redux/actions/deivs.actions'
+import { getAllDevis } from '../redux/actions/devis.actions'
 
 const Devis = () => {
 

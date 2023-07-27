@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { MultiValue } from "react-select"
 
 export type FORGET_PASSWORD_TYPE = {
     user: boolean
@@ -42,6 +43,18 @@ export type ADD_EDIT_NEWS_INFORMATION_TYPE = {
     content: string
     image?: string | File
     url?: string
+    type?: string
+    diffusionItems?: string | MultiValue<unknown>
+}
+
+export type ADD_EDIT_COMMUNE_TYPE = {
+    name: string
+    cityId: string
+}
+
+export type ADD_EDIT_QUARTER_TYPE = {
+    name: string
+    communeId: string
 }
 
 export type ListeType<T, K> = {
@@ -129,6 +142,10 @@ export type COLUMN_DATA_TABLE_TYPE = {
     motif: string
     localisation: string
     customer: { name: string, phone: string },
+    edition: Date
+    expire: Date
+    city: { id: string, name: string }
+    // commune: { id: string, name: string }
 }
 
 export type PAGE_COMPONENT_TYPE = (props: {
@@ -141,6 +158,8 @@ export type PAGE_COMPONENT_TYPE = (props: {
     ElementSelected?: Array<COLUMN_DATA_TABLE_TYPE>
     emptyRowSelected?: boolean
     displayDiscussion?: boolean
+    seeCommune?: boolean
+    seeQuarter?: boolean
     setSeeAdminAdmin?: React.Dispatch<React.SetStateAction<boolean>>
     setSeeAddNewsInformation?: React.Dispatch<React.SetStateAction<boolean>>
     setSeeAddTown?: React.Dispatch<React.SetStateAction<boolean>>
@@ -148,4 +167,6 @@ export type PAGE_COMPONENT_TYPE = (props: {
     setSearch?: React.Dispatch<React.SetStateAction<string>>
     setEmptyRowSelected?: React.Dispatch<React.SetStateAction<boolean>>
     setDisplayDiscussion?: React.Dispatch<React.SetStateAction<boolean>>
+    setSeeCommune?: React.Dispatch<React.SetStateAction<boolean>>
+    setSeeQuarter?: React.Dispatch<React.SetStateAction<boolean>>
 }) => JSX.Element

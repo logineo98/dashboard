@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ERROR_STAT_DEVIS_BY_YEAR, GET_ALL_STATS_DEVIS_BY_YEAR, LOADING_STAT_DEVIS_BY_YEAR, api_stat, api_stat_devis } from '../constants'
+import { ERROR_STAT_DEVIS_BY_YEAR, GET_ALL_STATS_DEVIS_BY_YEAR, LOADING_STAT_DEVIS_BY_YEAR, api_stat_devis } from '../constants'
 import { toast } from 'react-toastify'
 
 const token = localStorage.getItem('token')

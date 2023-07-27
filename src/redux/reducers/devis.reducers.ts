@@ -1,4 +1,4 @@
-import { ERROR_DEVIS, FILTER_DEVIS, GET_ALL_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS } from "../constants"
+import { ERROR_DEVIS, EXPORT_DEVIS, FILTER_DEVIS, GET_ALL_DEVIS, IMPORT_DEVIS, LOADING_DEVIS, VALIDATE_DEVIS } from "../constants"
 
 const initialState = {
     allDevis: [] as any[],
@@ -33,6 +33,12 @@ const devisReducer = (state = initialState, action: { type: string, payload: any
 
         case FILTER_DEVIS:
             return { ...state, allDevis: payload, devisFilter: true, loadingDevis: false, error: null }
+
+        case EXPORT_DEVIS:
+            return { ...state, loadingDevis: false, error: null }
+
+        case IMPORT_DEVIS:
+            return { ...state, loadingDevis: false, error: null }
 
         default:
             return state

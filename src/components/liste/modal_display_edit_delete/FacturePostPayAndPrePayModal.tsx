@@ -16,6 +16,9 @@ type FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE = {
 }
 
 const FacturePostPayAndPrePayModal: FC<FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete, setSeeModalDisplayEditDelete, title }) => {
+
+
+
     return (
         seeModalDisplayEditDelete ?
             <div className='modal'>
@@ -36,7 +39,7 @@ const FacturePostPayAndPrePayModal: FC<FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE> 
                             <div className='container'>
                                 <div className='information_container'>
                                     <span className='title'>Propriétaire compteur</span>
-                                    <span className='value'> {row?.owner?.length < 23 ? row?.owner : row?.owner.substring(0, 23) + '...'} </span>
+                                    <span className='value'> {row?.owner?.length < 23 ? row?.owner : row?.owner?.substring(0, 23) + '...'} </span>
                                 </div>
 
                                 <div className='information_container'>
@@ -48,15 +51,14 @@ const FacturePostPayAndPrePayModal: FC<FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE> 
                                     <span className='title'>Numéro compteur</span>
                                     <span className='value'> {row?.compteur} </span>
                                 </div>
+                            </div>
 
-                                <div className='information_container'>
-                                    <span className='title'>Adresse</span>
-                                    <span className='value'> {row?.address?.length < 23 ? row?.address : row?.address.substring(0, 23) + '...'} </span>
-                                </div>
+                            <div className='divider'></div>
 
+                            <div className='container'>
                                 <div className='information_container'>
-                                    <span className='title'>Montant total</span>
-                                    <span className='value'> {formatNumberWithSpaces(row?.amountToBePaid)} FCFA</span>
+                                    <span className='title'>Montant de la facture</span>
+                                    <span className='value'> {formatNumberWithSpaces(row?.amount)} FCFA</span>
                                 </div>
 
                                 <div className='information_container'>
@@ -65,8 +67,8 @@ const FacturePostPayAndPrePayModal: FC<FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE> 
                                 </div>
 
                                 <div className='information_container'>
-                                    <span className='title'>Dernière modification</span>
-                                    <span className='value'> {displayDate(row?.updatedAt)} </span>
+                                    <span className='title'>Montant restant à payer</span>
+                                    <span className='value'> {formatNumberWithSpaces(row?.amountToBePaid)} FCFA</span>
                                 </div>
 
                                 <div className='information_container'>
@@ -82,6 +84,25 @@ const FacturePostPayAndPrePayModal: FC<FACTURE_POST_PAY_AND_PRE_PAY_MODAL_TYPE> 
                                 <div className='information_container'>
                                     <span className='title'>Le numéro de retrait OM</span>
                                     <span className='value'> {row?.phone} </span>
+                                </div>
+                            </div>
+
+                            <div className='divider'></div>
+
+                            <div className='container'>
+                                <div className='information_container'>
+                                    <span className='title'>Date de création de la facture</span>
+                                    <span className='value'> {displayDate(new Date(row?.edition).getTime())} </span>
+                                </div>
+
+                                <div className='information_container'>
+                                    <span className='title'>Dernière modification</span>
+                                    <span className='value'> {displayDate(row?.updatedAt)} </span>
+                                </div>
+
+                                <div className='information_container'>
+                                    <span className='title'>Date d'échéance de paiement</span>
+                                    <span className='value'> {displayDate(new Date(row?.expire).getTime())} </span>
                                 </div>
                             </div>
                         </div>

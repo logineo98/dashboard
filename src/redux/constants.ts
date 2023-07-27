@@ -1,13 +1,13 @@
-// export const api_img = 'http://192.168.50.50:9000'
 // export const api = 'http://192.168.50.52:8080/api/v1'
-// export const api = 'http://192.168.50.50:8080/api/v1'
+export const api = 'http://192.168.50.50:8080/api/v1'
+export const api_img = 'http://192.168.50.50:9000'
 
-export const api = 'https://edm.mylogineo.com/api/v1'
-export const api_img = 'https://edm-files.mylogineo.com'
+// export const api = 'https://edm.mylogineo.com/api/v1'
+// export const api_img = 'https://edm-files.mylogineo.com'
 
 export const auth = `${api}/auth`
 export const api_user = `${api}/users`
-export const api_news = `${api}/actualites`
+export const api_news = `${api}/actualities`
 export const api_information = `${api}/informations`
 export const api_town = `${api}/cities`
 export const api_devis = `${api}/devis`
@@ -18,6 +18,8 @@ export const api_stat_devis = `${api}/stats/count-devis`
 export const api_stat_post_paid = `${api}/stats/count-postpaid`
 export const api_stat_isago = `${api}/stats/count-prepaid`
 export const api_assistance = `${api}/assistances`
+export const api_quarter = `${api}/quarters`
+export const api_commune = `${api}/communes`
 
 // admin auth
 export const LOADING_USER: string = 'LOADING_USER'
@@ -73,18 +75,22 @@ export const ERROR_DEVIS: string = 'ERROR_DEVIS'
 export const GET_ALL_DEVIS: string = 'GET_ALL_DEVIS'
 export const VALIDATE_DEVIS: string = 'VALIDATE_DEVIS'
 export const FILTER_DEVIS: string = 'FILTER_DEVIS'
+export const EXPORT_DEVIS: string = 'EXPORT_DEVIS'
+export const IMPORT_DEVIS: string = 'IMPORT_DEVIS'
 
 // facutre post-pay
 export const LOADING_POST_PAY: string = 'LOADING_POST_PAY'
 export const ERROR_POST_PAY: string = 'ERROR_POST_PAY'
 export const GET_ALL_POST_PAYS: string = 'GET_ALL_POST_PAYS'
 export const FILTER_POST_PAY: string = 'FILTER_POST_PAY'
+export const EXPORT_POST_PAY: string = 'EXPORT_POST_PAY'
 
 // facutre pre-pay
 export const LOADING_PRE_PAY: string = 'LOADING_PRE_PAY'
 export const ERROR_PRE_PAY: string = 'ERROR_PRE_PAY'
 export const GET_ALL_PRE_PAYS: string = 'GET_ALL_PRE_PAYS'
 export const FILTER_PRE_PAY: string = 'FILTER_PRE_PAY'
+export const EXPORT_PRE_PAY: string = 'EXPORT_PRE_PAY'
 
 // statistique
 export const LOADING_STAT: string = 'LOADING_STAT'
@@ -113,3 +119,21 @@ export const ERROR_ASSISTANCE: string = 'ERROR_ASSISTANCE'
 export const GET_ASSISTANCE: string = 'GET_ASSISTANCE'
 export const GET_ALL_ASSISTANCES: string = 'GET_ALL_ASSISTANCES'
 export const REPLY_ASSISTANCE: string = 'REPLY_ASSISTANCE'
+
+// COMMUNE
+export const LOADING_COMMUNE: string = 'LOADING_COMMUNE'
+export const ERROR_COMMUNE: string = 'ERROR_COMMUNE'
+export const GET_COMMUNE: string = 'GET_COMMUNE'
+export const GET_ALL_COMMUNES: string = 'GET_ALL_COMMUNES'
+export const ADD_COMMUNE: string = 'ADD_COMMUNE'
+export const EDIT_COMMUNE: string = 'EDIT_COMMUNE'
+export const DELETE_COMMUNE: string = 'DELETE_COMMUNE'
+
+// QUARTIER
+export const LOADING_QUARTER: string = 'LOADING_QUARTER'
+export const ERROR_QUARTER: string = 'ERROR_QUARTER'
+export const GET_QUARTER: string = 'GET_QUARTER'
+export const GET_ALL_QUARTERS: string = 'GET_ALL_QUARTERS'
+export const ADD_QUARTER: string = 'ADD_QUARTER'
+export const EDIT_QUARTER: string = 'EDIT_QUARTER'
+export const DELETE_QUARTER: string = 'DELETE_QUARTER'

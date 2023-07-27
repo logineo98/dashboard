@@ -21,7 +21,7 @@ const TownModal: FC<TOWN_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, setSee
     const [editTownData, setEditTownData] = useState(data)
     const [err, setErr] = useState<ADD_EDIT_TOWN_TYPE>()
 
-    const { allTowns, loadingTown } = useSelector((state: RootReducerType) => state.town)
+    const { loadingTown } = useSelector((state: RootReducerType) => state.town)
     const dispatch = useDispatch<any>()
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -16,9 +16,7 @@ const Map: PAGE_COMPONENT_TYPE = ({ displayDiscussion, setDisplayDiscussion }) =
     return (
         <div className={displayDiscussion ? 'map display' : 'map'}>
             <MapContainer center={[12.6026423, -8.0169295]} zoom={13} scrollWheelZoom={false}>
-                <TileLayer
-                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                />
+                <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
                 {allAssistances?.map((assistance: any) => (
                     <Marker key={assistance?.id} position={[assistance?.latitude, assistance?.longitude]} icon={customIcon} >
                         <Popup>

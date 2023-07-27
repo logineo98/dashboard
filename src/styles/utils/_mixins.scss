@@ -139,9 +139,9 @@
     }
 }
 
-@mixin input-select($fz: 15, $br: 5) {
+@mixin input-select($fz: 15, $br: 5, $h: 100%) {
     background: $white;
-    height: 100%;
+    height: $h;
     border: rem-calc(1) solid $light;
     border-radius: rem-calc($br);
     padding: 0 rem-calc(10) 0;

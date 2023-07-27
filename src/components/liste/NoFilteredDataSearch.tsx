@@ -19,6 +19,10 @@ const NoFilteredDataSearch: PAGE_COMPONENT_TYPE = ({ title }) => {
         return <h2 className='no_data'>Aucune facture pré-payé trouvée !</h2>
     } else if (title === 'devis') {
         return <h2 className='no_data'>Aucun devis trouvé !</h2>
+    } else if (title === 'commune') {
+        return <h2 className='no_data'>Aucune commune trouvé !</h2>
+    } else if (title === 'quarter') {
+        return <h2 className='no_data'>Aucun quartier trouvé !</h2>
     } else {
         return <></>
     }

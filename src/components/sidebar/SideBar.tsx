@@ -13,7 +13,7 @@ const SideBar = () => {
         dashboard: pathname === '/' ? true : false,
         devis: pathname === '/list-devis' ? true : false,
         paiement: (pathname === '/list-credit-isago' || pathname === '/list-facture-post-pay') ? true : false,
-        setting: (pathname === '/admin' || pathname === '/town') ? true : false,
+        setting: (pathname === '/admin' || pathname === '/town' || pathname === '/quarter' || pathname === '/commune') ? true : false,
         historical: pathname === '/historical' ? true : false,
         assistance: pathname === '/assistance' ? true : false,
         information: pathname === '/information' ? true : false,
@@ -59,7 +59,7 @@ const SideBar = () => {
                         </div>
                     </NavLink>
                     <ul className='sous_menus'>
-                        <li><NavLink to='/list-facture-post-pay' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Post payé</NavLink></li>
+                        <li><NavLink to='/list-facture-post-pay' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Post PAID</NavLink></li>
                         <li><NavLink to='/list-credit-isago' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>ISAGO</NavLink></li>
                     </ul>
                 </li>
@@ -109,7 +109,7 @@ const SideBar = () => {
                 </li>
 
                 <li className={menu.setting ? 'container sub_menu active' : 'sub_menu container'}>
-                    <NavLink to='/admin' className={({ isActive }) => { if (isActive || pathname === '/town') return 'menu_name active'; else return 'menu_name' }}>
+                    <NavLink to='/admin' className={({ isActive }) => { if (isActive || pathname === '/town' || pathname === '/quarter' || pathname === '/commune') return 'menu_name active'; else return 'menu_name' }}>
                         <div className='titre-fleche'>
                             <div className='titre-icon'>
                                 <AiOutlineSetting className='icon' />
@@ -121,6 +121,8 @@ const SideBar = () => {
                     <ul className='sous_menus'>
                         <li><NavLink to='/admin' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Administrateurs</NavLink></li>
                         <li><NavLink to='/town' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Villes</NavLink></li>
+                        <li><NavLink to='/commune' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Communes</NavLink></li>
+                        <li><NavLink to='/quarter' className={({ isActive }) => { if (isActive) return 'lien active'; else return 'lien' }}>Quartiers</NavLink></li>
                     </ul>
                 </li>
             </ul>

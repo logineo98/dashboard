@@ -192,11 +192,11 @@ export const activeAdminOrUser = (id: string, oldStatus: boolean, setSeeModalDis
     }
 }
 
-export const filterClient = (data: { enable?: string | boolean | null }) => async (dispatch: any) => {
+export const filterClient = (data: { enabled?: string | boolean | null }) => async (dispatch: any) => {
     try {
         dispatch(LoadingUser())
 
-        const response = await axios.post(`${api_user}/filter`, data, { headers: { Authorization: `Bearer ${token}` } })
+        const response = await axios.post(`${api_user}/customers/filter`, data, { headers: { Authorization: `Bearer ${token}` } })
 
         dispatch({ type: FILTER_CLIENT, payload: response.data })
     } catch (error: any) {
