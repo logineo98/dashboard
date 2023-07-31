@@ -112,8 +112,9 @@ export const validation_news = (info: boolean, props: ADD_EDIT_NEWS_INFORMATION_
     if (info) {
         if (!type || type.trim() === '') error = { ...error, type: 'Veuillez sélectionner une cible' }
 
-
-        if (!diffusionItems || (diffusionItems as string).trim() === '') error = { ...error, diffusionItems: 'Veuillez faire au moins un choix' }
+        if (typeof diffusionItems !== 'string') {
+            if (diffusionItems?.length === 0) error = { ...error, diffusionItems: 'Veuillez faire au moins un choix' }
+        }
     }
 
     if (!title || title.trim() === '') error = { ...error, title: 'Veuillez renseigner le champ.' }
@@ -151,7 +152,7 @@ export const validation_devis = (props: VALIDATION_DEVIS_TYPE) => {
     return { error, initialError }
 }
 
-export const validation_add_commune = (props: ADD_EDIT_COMMUNE_TYPE) => {
+export const validation_commune = (props: ADD_EDIT_COMMUNE_TYPE) => {
     const { cityId, name } = props
     const initialError: ADD_EDIT_COMMUNE_TYPE = { cityId: '', name: '' }
     let error = initialError
@@ -162,7 +163,7 @@ export const validation_add_commune = (props: ADD_EDIT_COMMUNE_TYPE) => {
     return { error, initialError }
 }
 
-export const validation_add_quarter = (props: ADD_EDIT_QUARTER_TYPE) => {
+export const validation_quarter = (props: ADD_EDIT_QUARTER_TYPE) => {
     const { communeId, name } = props
     const initialError: ADD_EDIT_QUARTER_TYPE = { communeId: '', name: '' }
     let error = initialError

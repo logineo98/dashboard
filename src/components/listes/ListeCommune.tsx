@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup'
 import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai'
 import { CiEdit } from 'react-icons/ci'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import CommuneModal from '../liste/modal_display_edit_delete/CommuneModal'
 
 const ListeCommune: PAGE_COMPONENT_TYPE = () => {
 
@@ -69,7 +70,7 @@ const ListeCommune: PAGE_COMPONENT_TYPE = () => {
         <div className='liste_container'>
             <Liste title='commune' datas={data} columns={columns} />
 
-            {/* <AdminModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} /> */}
+            <CommuneModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
         </div>
     )
 }

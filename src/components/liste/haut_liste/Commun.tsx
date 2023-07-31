@@ -15,6 +15,8 @@ const Commun: PAGE_COMPONENT_TYPE = ({ title, setSearch }) => {
     const { loadingPrePay } = useSelector((state: RootReducerType) => state.pre_pay)
     const { loadingTown } = useSelector((state: RootReducerType) => state.town)
     const { loadingUser } = useSelector((state: RootReducerType) => state.user)
+    const { loadingCommune } = useSelector((state: RootReducerType) => state.commune)
+    const { loadingQuarter } = useSelector((state: RootReducerType) => state.quarter)
 
     useEffect(() => {
         switch (title) {
@@ -26,10 +28,12 @@ const Commun: PAGE_COMPONENT_TYPE = ({ title, setSearch }) => {
             case 'town': setReduxLoading(loadingTown); break
             case 'admin': setReduxLoading(loadingUser); break
             case 'client': setReduxLoading(loadingUser); break
+            case 'commune': setReduxLoading(loadingCommune); break
+            case 'quarter': setReduxLoading(loadingQuarter); break
 
             default: setReduxLoading(false); break
         }
-    }, [title, loadingDevis, loadingInfo, loadingNews, loadingPostPay, loadingPrePay, loadingTown, loadingUser])
+    }, [title, loadingDevis, loadingInfo, loadingNews, loadingPostPay, loadingPrePay, loadingTown, loadingUser, loadingCommune, loadingQuarter])
 
 
     return (

@@ -456,7 +456,7 @@
                     }
 
                     textarea {
-                        @include h-w(rem-calc(190), 100%);
+                        @include h-w(rem-calc(150), 100%);
                         border: rem-calc(1) solid $light;
                         border-top-left-radius: rem-calc(8);
                         border-bottom-left-radius: rem-calc(8);

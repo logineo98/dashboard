@@ -40,7 +40,8 @@ const Liste = (props: ListeType<any, any>) => {
             data?.title?.toLowerCase().match(search.toLocaleLowerCase()) ||
             data?.content?.toLowerCase().match(search.toLocaleLowerCase()) ||
             data?.city?.name?.toLowerCase().match(search.toLocaleLowerCase()) ||
-            data?.commune?.name?.toLowerCase().match(search.toLocaleLowerCase())
+            data?.commune?.name?.toLowerCase().match(search.toLocaleLowerCase()) ||
+            data?.commune?.city?.name?.toLowerCase().match(search.toLocaleLowerCase())
         )
 
         setFilteredDataSearch(result)

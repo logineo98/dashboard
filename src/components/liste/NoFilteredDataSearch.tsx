@@ -14,13 +14,13 @@ const NoFilteredDataSearch: PAGE_COMPONENT_TYPE = ({ title }) => {
     } else if (title === 'town') {
         return <h2 className='no_data'>Aucune ville trouvée !</h2>
     } else if (title === 'post_pay') {
-        return <h2 className='no_data'>Aucune facture post-payé trouvée !</h2>
+        return <h2 className='no_data'>Aucune facture POST PAID trouvée !</h2>
     } else if (title === 'pre_pay') {
-        return <h2 className='no_data'>Aucune facture pré-payé trouvée !</h2>
+        return <h2 className='no_data'>Aucune facture PRE PAID trouvée !</h2>
     } else if (title === 'devis') {
         return <h2 className='no_data'>Aucun devis trouvé !</h2>
     } else if (title === 'commune') {
-        return <h2 className='no_data'>Aucune commune trouvé !</h2>
+        return <h2 className='no_data'>Aucune commune trouvée !</h2>
     } else if (title === 'quarter') {
         return <h2 className='no_data'>Aucun quartier trouvé !</h2>
     } else {

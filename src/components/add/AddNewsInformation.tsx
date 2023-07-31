@@ -24,7 +24,6 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
     const [previewImg, setPreviewImg] = useState<string | File>('')
     const [err, setErr] = useState<ADD_EDIT_NEWS_INFORMATION_TYPE>()
     const [typeCible, setTypeCible] = useState('')
-    const [multipleSelect, setMultipleSelect] = useState<MultiValue<unknown>>()
 
     const { loadingNews } = useSelector((state: RootReducerType) => state.news)
     const { loadingInfo } = useSelector((state: RootReducerType) => state.information)
@@ -33,6 +32,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
     const { loadingQuarter, allQuaters } = useSelector((state: RootReducerType) => state.quarter)
 
     const dispatch = useDispatch<any>()
+    console.log(addInformationData)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -42,57 +42,47 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
         if (error.content !== initialError.content || error.image !== initialError.image || error.title !== initialError.title || error.type !== initialError.type || error.diffusionItems !== initialError.diffusionItems) {
             setErr(error)
         } else {
-            const { content, image, title } = addNewsData
             setErr(initialError)
 
-            const data = new FormData()
-
-            data.append('title', title)
-            data.append('content', content)
-            if (image) data.append('image', image)
-
             if (titre === 'news') {
-                dispatch(addNews(data, setAddNewsData, setPreviewImg))
-            } else {
-
-                const monTableau = [{ id: 'EDM_News', name: 'Tout le monde' }];
+                const { content, image, title } = addNewsData
 
                 const data = new FormData()
-                data.append('type', 'Tout le monde')
-                data.append('title', 'tz nation')
-                data.append('content', 'qsdf qsdfqsdf qsdfqsdf qdfq')
-                data.append('diffusionItems', JSON.stringify(monTableau))
+
+                data.append('title', title)
+                data.append('content', content)
+                if (image) data.append('image', image)
+                dispatch(addNews(data, setAddNewsData, setPreviewImg))
+            } else {
+                const { content, image, title, type, diffusionItems } = addInformationData
+
+                const data = new FormData()
+
+                data.append('title', title)
+                data.append('content', content)
+                if (image) data.append('image', image)
+                data.append('type', type as string)
+
+                if (type === 'Tout le monde') data.append('diffusionItems', JSON.stringify(diffusionItems))
+                else data.append('diffusionItems', JSON.stringify((diffusionItems as MultiValue<{ value: string, label: string }>).map((el) => ({ id: el?.value, name: el?.label }))))
 
                 dispatch(addInformation(
-                    data, setAddNewsData, setPreviewImg
+                    data, setAddInformationData, setPreviewImg
                 ))
             }
         }
-
-        // const monTableau = [{ id: 'cty_u59y8wj2e3', name: 'Bamako' },];
-
-        // const data = new FormData()
-        // data.append('type', 'Ville')
-        // data.append('title', 'tz nation')
-        // data.append('content', 'qsdf qsdfqsdf qsdfqsdf qdfq')
-        // data.append('diffusionItems', JSON.stringify(monTableau))
-
-        // dispatch(addInformation(
-        //     data, setAddNewsData, setPreviewImg
-        // ))
     }
 
     useEffect(() => {
         if (typeCible) {
-            if (typeCible === 'Ville') { dispatch(getAllTowns()); setMultipleSelect([]) }
-            else if (typeCible === 'Commune') { dispatch(getAllCommunes()); setMultipleSelect([]) }
-            else if (typeCible === 'Quartier') { dispatch(getAllQuarters()); setMultipleSelect([]) }
-            else if (typeCible === 'Tout le monde') setMultipleSelect([{ id: 'EDM_News', name: 'Tout le monde' }])
+            if (typeCible === 'Ville') { dispatch(getAllTowns()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
+            else if (typeCible === 'Commune') { dispatch(getAllCommunes()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
+            else if (typeCible === 'Quartier') { dispatch(getAllQuarters()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
+            else if (typeCible === 'Tout le monde') { setAddInformationData({ ...addInformationData, diffusionItems: [{ id: 'EDM_News', name: 'Tout le monde' }] }) }
 
-        } else setMultipleSelect([])
-    }, [dispatch, typeCible])
+        } else { setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
+    }, [dispatch, typeCible, addInformationData])
 
-    console.log(multipleSelect)
     return (
         !seeAddNewsInformation ? <></> :
             <div className='add'>
@@ -153,7 +143,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                             <div className='select_label_container'>
                                 <label htmlFor='type'>Cible</label>
 
-                                <select name='type' id='type' onChange={e => { setTypeCible(e.target.value); setAddInformationData({ ...addInformationData, type: e.target.value }) }}>
+                                <select name='type' id='type' value={addInformationData.type} onChange={e => { setTypeCible(e.target.value); setAddInformationData({ ...addInformationData, type: e.target.value }) }}>
                                     <option value=''>Veuillez sélectionner la cible</option>
                                     <option value='Tout le monde'>Tout le monde</option>
                                     <option value='Ville'>Ville</option>
@@ -171,7 +161,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                         {loadingTown ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
                                             <Select
                                                 options={(allTowns?.map((town: { id: string, name: string }) => ({ value: town?.id, label: town?.name })))}
-                                                onChange={el => { setMultipleSelect(el); setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
+                                                onChange={el => { setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
                                                 isMulti
                                                 placeholder='Veuillez sélectionner la(es) villes'
                                                 className='select_multiple'
@@ -189,7 +179,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                         {loadingCommune ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
                                             <Select
                                                 options={(allCommunes?.map((commune: { id: string, name: string }) => ({ value: commune?.id, label: commune?.name })))}
-                                                onChange={el => { setMultipleSelect(el); setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
+                                                onChange={el => { setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
                                                 isMulti
                                                 placeholder='Veuillez sélectionner la(es) communes'
                                                 className='select_multiple'
@@ -206,7 +196,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                         {loadingQuarter ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
                                             <Select
                                                 options={(allQuaters?.map((commune: { id: string, name: string }) => ({ value: commune?.id, label: commune?.name })))}
-                                                onChange={el => { setMultipleSelect(el); setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
+                                                onChange={el => { setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
                                                 isMulti
                                                 placeholder='Veuillez sélectionner le(es) quartiers'
                                                 className='select_multiple'

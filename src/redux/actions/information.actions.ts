@@ -25,7 +25,7 @@ export const getAllInformations = () => async (dispatch: any) => {
     }
 }
 
-export const addInformation = (data: FormData, setAddNewsData: React.Dispatch<React.SetStateAction<ADD_EDIT_NEWS_INFORMATION_TYPE>>, setPreviewImg: React.Dispatch<React.SetStateAction<string | File>>) => async (dispatch: any) => {
+export const addInformation = (data: FormData, setAddInformationData: React.Dispatch<React.SetStateAction<ADD_EDIT_NEWS_INFORMATION_TYPE>>, setPreviewImg: React.Dispatch<React.SetStateAction<string | File>>) => async (dispatch: any) => {
     try {
         dispatch(LoadingInformation())
 
@@ -33,7 +33,7 @@ export const addInformation = (data: FormData, setAddNewsData: React.Dispatch<Re
 
         toast.success('L\'information a été ajoutée avec succès.')
 
-        setAddNewsData({ title: '', content: '', image: '' })
+        setAddInformationData({ title: '', content: '', image: '', type: '', diffusionItems: '' })
         setPreviewImg('')
 
         dispatch({ type: ADD_INFORMATION, payload: response.data })

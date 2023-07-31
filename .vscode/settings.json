@@ -7,10 +7,12 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "node_modules": true,
-        ".vscode": true
+        ".vscode": true,
+        "public": true
     },
     "hide-files.files": [
         "node_modules",
-        ".vscode"
+        ".vscode",
+        "public"
     ]
 }

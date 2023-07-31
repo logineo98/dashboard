@@ -407,7 +407,7 @@
                 }
 
                 textarea {
-                    @include h-w(rem-calc(190), 100%);
+                    @include h-w(rem-calc(150), 100%);
                     border: rem-calc(1) solid $light;
                     border-top-left-radius: rem-calc(8);
                     border-bottom-left-radius: rem-calc(8);
@@ -580,7 +580,7 @@
                 }
 
                 textarea {
-                    @include h-w(rem-calc(190), 100%);
+                    @include h-w(rem-calc(150), 100%);
                     border: rem-calc(1) solid $light;
                     border-top-left-radius: rem-calc(8);
                     border-bottom-left-radius: rem-calc(8);
@@ -614,20 +614,27 @@
             text-align: center;
 
             .select_label_container {
-                @include df($ai: center);
-                height: rem-calc(35);
+                @include df();
+                flex-direction: column;
+                margin-top: rem-calc(20);
 
                 label {
-                    @include df($ai: center);
+                    font-size: rem-calc(10);
                     color: $sb-ic-txt-color;
+                    margin-bottom: rem-calc(5);
                     text-transform: uppercase;
                     font-weight: 600;
                 }
 
                 select {
                     @include input-select($br: 4);
-                    text-align: center;
-                    margin-left: rem-calc(20);
+                    @include h-w($h: rem-calc(35), $w: 100%);
+                }
+
+                .error {
+                    font-size: rem-calc(14);
+                    color: $sb-hover-color;
+                    font-style: italic;
                 }
             }
         }

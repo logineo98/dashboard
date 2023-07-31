@@ -240,7 +240,7 @@ const DevisModal: FC<DEVIS_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, setS
 
                                                 <div className='information_container'>
                                                     <span className='title'>Commune</span>
-                                                    <span className='value'> {row?.commune ? row?.commune : 'N/A'} </span>
+                                                    <span className='value'> {row?.commune ? row?.commune as string : 'N/A'} </span>
                                                 </div>
 
                                                 <div className='information_container'>

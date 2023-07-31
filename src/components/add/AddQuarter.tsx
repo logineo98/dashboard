@@ -3,8 +3,7 @@ import { ADD_EDIT_QUARTER_TYPE, PAGE_COMPONENT_TYPE } from '../../utils/types'
 import { RootReducerType } from '../../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { addQuarter } from '../../redux/actions/quarter.actions'
-import { getAllTowns } from '../../redux/actions/town.actions'
-import { validation_add_quarter } from '../../utils/validation'
+import { validation_quarter } from '../../utils/validation'
 import { getAllCommunes } from '../../redux/actions/commune.actions'
 import { FaUserCircle } from 'react-icons/fa'
 import Loading from '../loading/Loading'
@@ -25,7 +24,7 @@ const AddQuarter: PAGE_COMPONENT_TYPE = ({ seeQuarter, setSeeQuarter }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const { error, initialError } = validation_add_quarter(addQuarterData)
+        const { error, initialError } = validation_quarter(addQuarterData)
 
         if (error.communeId !== initialError.communeId || error.name !== initialError.name) {
             setErr(error)
@@ -54,7 +53,7 @@ const AddQuarter: PAGE_COMPONENT_TYPE = ({ seeQuarter, setSeeQuarter }) => {
                     <RxCross2 className='croix' onClick={() => { setSeeQuarter && setSeeQuarter(false); setAddQuarterData(data); setErr(data) }} />
 
                     <div className='loading_container'>
-                        {loadingCommune && <Loading h_w={40} hide_text mg='0px' padding='0px' />}
+                        {loadingQuarter && <Loading h_w={40} hide_text mg='0px' padding='0px' />}
                     </div>
 
                     <div className='icon_name'>
@@ -85,8 +84,8 @@ const AddQuarter: PAGE_COMPONENT_TYPE = ({ seeQuarter, setSeeQuarter }) => {
                         </div>
 
                         <div className='save_abort'>
-                            <button disabled={loadingCommune ? true : false} style={{ cursor: loadingCommune ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                            <button type='reset' className='abort' disabled={loadingCommune ? true : false} style={{ cursor: loadingCommune ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeQuarter && setSeeQuarter(false); setErr(data) }}>Annuler</button>
+                            <button disabled={loadingQuarter ? true : false} style={{ cursor: loadingQuarter ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
+                            <button type='reset' className='abort' disabled={loadingQuarter ? true : false} style={{ cursor: loadingQuarter ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeQuarter && setSeeQuarter(false); setErr(data) }}>Annuler</button>
                         </div>
                     </form>
 

@@ -48,11 +48,13 @@ export type ADD_EDIT_NEWS_INFORMATION_TYPE = {
 }
 
 export type ADD_EDIT_COMMUNE_TYPE = {
+    id?: string
     name: string
     cityId: string
 }
 
 export type ADD_EDIT_QUARTER_TYPE = {
+    id?: string
     name: string
     communeId: string
 }
@@ -99,7 +101,7 @@ export type COLUMN_DATA_TABLE_TYPE = {
     typeDemande: string
     usage: string
     ville: ADD_EDIT_TOWN_TYPE
-    commune: string
+    commune: string | { id: string, name: string } | { id: string, name: string, city: { id: string, name: string } }
     quartier: string
     rue: string
     lot: string

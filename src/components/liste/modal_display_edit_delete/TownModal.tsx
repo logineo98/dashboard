@@ -76,14 +76,14 @@ const TownModal: FC<TOWN_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, setSee
                     {type === 'modifier' &&
                         <form action='' onSubmit={handleSubmit}>
                             <div className='input_label_container'>
-                                <label htmlFor='name'>Nom complet</label>
+                                <label htmlFor='name'>Nom de la ville</label>
                                 <input type='text' name='name' id='name' value={editTownData.name} onChange={e => setEditTownData({ ...editTownData, name: e.target.value })} />
                                 {err?.name && <span className='error'> {err?.name} </span>}
                             </div>
 
                             <div className='save_abort'>
                                 <button disabled={loadingTown ? true : false} style={{ cursor: loadingTown ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                                <button type='reset' className='abort' disabled={loadingTown ? true : false} style={{ cursor: loadingTown ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete && setSeeModalDisplayEditDelete(false); }}>Annuler</button>
+                                <button type='reset' className='abort' disabled={loadingTown ? true : false} style={{ cursor: loadingTown ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete && setSeeModalDisplayEditDelete(false); setErr(data) }}>Annuler</button>
                             </div>
                         </form>
                     }
@@ -94,8 +94,8 @@ const TownModal: FC<TOWN_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, setSee
                                 <p> Voulez-vous vraiment supprimer cette ville ? </p>
 
                                 <div className='yes_or_no_container'>
-                                    <span className='yes' onClick={() => { dispatch(deleteTown(row?.id, setSeeModalDisplayEditDelete)); }}>OUI</span>
-                                    <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
+                                    <button disabled={loadingTown ? true : false} style={{ cursor: loadingTown ? 'not-allowed' : 'pointer' }} className='yes' onClick={() => { dispatch(deleteTown(row?.id, setSeeModalDisplayEditDelete)); }}>OUI</button>
+                                    <button disabled={loadingTown ? true : false} style={{ cursor: loadingTown ? 'not-allowed' : 'pointer' }} className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</button>
                                 </div>
                             </div>
                         </div>

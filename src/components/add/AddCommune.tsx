@@ -6,7 +6,7 @@ import Loading from '../loading/Loading'
 import { RootReducerType } from '../../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllTowns } from '../../redux/actions/town.actions'
-import { validation_add_commune } from '../../utils/validation'
+import { validation_commune } from '../../utils/validation'
 import { addCommune } from '../../redux/actions/commune.actions'
 
 const AddCommune: PAGE_COMPONENT_TYPE = ({ seeCommune, setSeeCommune }) => {
@@ -24,7 +24,7 @@ const AddCommune: PAGE_COMPONENT_TYPE = ({ seeCommune, setSeeCommune }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const { error, initialError } = validation_add_commune(addCommuneData)
+        const { error, initialError } = validation_commune(addCommuneData)
 
         if (error.cityId !== initialError.cityId || error.name !== initialError.name) {
             setErr(error)

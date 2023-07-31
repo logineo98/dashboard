@@ -157,13 +157,13 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                     {type === 'modifier' && title === 'information' &&
                         <form onSubmit={handleSubmit} encType='multipart/form-data'>
                             <div className='file_label_container'>
-                                <label>Image mise en avant de l'actualité</label>
+                                <label>Image mise en avant de l'information</label>
                                 {previewImg ?
                                     <label htmlFor='image' className='preview_img_container'>
-                                        <img src={previewImg as string} alt='image_actualité' />
+                                        <img src={previewImg as string} alt='image_information' />
                                     </label> : editNewsInformationData.image &&
                                     <label htmlFor='image' className='img_container'>
-                                        <img src={`${api_img}/${row?.image}`} alt='image_actualité' />
+                                        <img src={`${api_img}/${row?.image}`} alt='image_information' />
                                     </label>
                                 }
                                 {err?.image && <span className='error'> {err?.image as string} </span>}
@@ -189,8 +189,8 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                             </div>
 
                             <div className='save_abort'>
-                                <button disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                                <button type='reset' className='abort' disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete(false); setPreviewImg(''); setErr(data); }}>Annuler</button>
+                                <button disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
+                                <button type='reset' className='abort' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete(false); setPreviewImg(''); setErr(data); }}>Annuler</button>
                             </div>
                         </form>
                     }
@@ -201,8 +201,8 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                                 <p> Voulez-vous vraiment supprimer cette actualité ? </p>
 
                                 <div className='yes_or_no_container'>
-                                    <span className='yes' onClick={() => { dispatch(deleteNews(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</span>
-                                    <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
+                                    <button disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }} className='yes' onClick={() => { dispatch(deleteNews(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</button>
+                                    <button disabled={loadingNews ? true : false} style={{ cursor: loadingNews ? 'not-allowed' : 'pointer' }} className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</button>
                                 </div>
                             </div>
                         </div>
@@ -214,8 +214,8 @@ const NewsInformationModal: FC<NEWS_INFORMATION_MODAL_TYPE> = ({ row, seeModalDi
                                 <p> Voulez-vous vraiment supprimer cette  information ? </p>
 
                                 <div className='yes_or_no_container'>
-                                    <span className='yes' onClick={() => { dispatch(deleteInformation(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</span>
-                                    <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
+                                    <button className='yes' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => { dispatch(deleteInformation(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</button>
+                                    <button className='no' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => setSeeModalDisplayEditDelete(false)}>NON</button>
                                 </div>
                             </div>
                         </div>

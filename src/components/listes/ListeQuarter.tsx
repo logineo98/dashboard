@@ -7,6 +7,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai'
 import { CiEdit } from 'react-icons/ci'
 import Liste from '../liste/Liste'
+import QuarterModal from '../liste/modal_display_edit_delete/QuarterModal'
 
 const ListeQuarter = () => {
 
@@ -17,6 +18,10 @@ const ListeQuarter = () => {
     const [type, setType] = useState('')
 
     const data: Array<COLUMN_DATA_TABLE_TYPE> = allQuaters
+    // const data = [
+    //     { id: 'tz', name: 'Commune I', commune: { id: 'zz', name: 'Kabala', city: { id: 'ds', name: 'zoro' } } },
+    //     { id: 'hhh', name: 'Commune IV', commune: { id: 'ui', name: 'Bamako', city: { id: 'dsd', name: 'oued aissi' } } },
+    // ]
 
     const handleDisplay = (type: string, value: COLUMN_DATA_TABLE_TYPE) => {
         if (type === 'afficher') {
@@ -38,6 +43,7 @@ const ListeQuarter = () => {
         { name: '#', selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
         { name: 'Nom du quartier', selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
         { name: 'Associée à la commune', selector: (row: { commune: { name: string } }) => row.commune.name, sortable: true },
+        { name: 'Associée à la ville', selector: (row: { commune: { name: string, city: { name: string } } }) => row.commune.city.name, sortable: true },
         {
             name: <p style={{ width: '100%', textAlign: 'center' }}>Action</p>,
             cell: (row: COLUMN_DATA_TABLE_TYPE) => (
@@ -69,7 +75,7 @@ const ListeQuarter = () => {
         <div className='liste_container'>
             <Liste title='quarter' datas={data} columns={columns} />
 
-            {/* <AdminModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} /> */}
+            <QuarterModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
         </div>
     )
 }

@@ -23,7 +23,7 @@ const CreditISAGO = () => {
     return (
         <PageContainer>
             <div className='right_container'>
-                <TitreAjout title='Factures pré-payés' />
+                <TitreAjout title='Factures PRE PAID' />
 
                 <ListeFacturePostPayAndPrePay title='pre_pay' />
             </div>

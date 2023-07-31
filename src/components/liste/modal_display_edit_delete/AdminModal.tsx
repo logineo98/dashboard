@@ -169,7 +169,7 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
 
                             <div className='save_abort'>
                                 <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                                <button type='reset' className='abort' disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete && setSeeModalDisplayEditDelete(false); }}>Annuler</button>
+                                <button type='reset' className='abort' disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeModalDisplayEditDelete && setSeeModalDisplayEditDelete(false); setErr(data) }}>Annuler</button>
                             </div>
 
                             {admin?.id === row?.id &&
@@ -186,8 +186,8 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
                                 <p> Voulez-vous vraiment supprimer cet(te) administrateur(trice) ? </p>
 
                                 <div className='yes_or_no_container'>
-                                    <span className='yes' onClick={() => { dispatch(deleteAdmin(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</span>
-                                    <span className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</span>
+                                    <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} className='yes' onClick={() => { dispatch(deleteAdmin(row?.id, setSeeModalDisplayEditDelete)) }}>OUI</button>
+                                    <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} className='no' onClick={() => setSeeModalDisplayEditDelete(false)}>NON</button>
                                 </div>
                             </div>
                         </div>
