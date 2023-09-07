@@ -33,7 +33,7 @@ export const addInformation = (data: FormData, setAddInformationData: React.Disp
 
         toast.success('L\'information a été ajoutée avec succès.')
 
-        setAddInformationData({ title: '', content: '', image: '', type: '', diffusionItems: '' })
+        setAddInformationData({ title: '', content: '', image: '', type: '', diffusionItems: [] })
         setPreviewImg('')
 
         dispatch({ type: ADD_INFORMATION, payload: response.data })

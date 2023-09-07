@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ADD_EDIT_NEWS_INFORMATION_TYPE, PAGE_COMPONENT_TYPE } from '../../utils/types'
 import { FaUserCircle } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
-import { validation_news } from '../../utils/validation';
+import { validation_news_information } from '../../utils/validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNews } from '../../redux/actions/news.actions';
 import { addInformation } from '../../redux/actions/information.actions';
@@ -16,7 +16,7 @@ import { getAllQuarters } from '../../redux/actions/quarter.actions';
 const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation, setSeeAddNewsInformation }) => {
 
     const data: ADD_EDIT_NEWS_INFORMATION_TYPE = { title: '', content: '', image: '' }
-    const dataInfo: ADD_EDIT_NEWS_INFORMATION_TYPE = { title: '', content: '', image: '', type: '', diffusionItems: '' }
+    const dataInfo: ADD_EDIT_NEWS_INFORMATION_TYPE = { title: '', content: '', image: '', type: '', diffusionItems: [] }
     const titre = title
 
     const [addNewsData, setAddNewsData] = useState(data)
@@ -32,14 +32,13 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
     const { loadingQuarter, allQuaters } = useSelector((state: RootReducerType) => state.quarter)
 
     const dispatch = useDispatch<any>()
-    console.log(addInformationData)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const { error, initialError } = title === 'news' ? validation_news(false, addNewsData) : validation_news(true, addInformationData)
+        const { error, initialError } = title === 'news' ? validation_news_information(false, addNewsData) : validation_news_information(true, addInformationData)
 
-        if (error.content !== initialError.content || error.image !== initialError.image || error.title !== initialError.title || error.type !== initialError.type || error.diffusionItems !== initialError.diffusionItems) {
+        if (error.type !== initialError.type || error.content !== initialError.content || error.image !== initialError.image || error.title !== initialError.title || error.type !== initialError.type || error.diffusionItems !== initialError.diffusionItems) {
             setErr(error)
         } else {
             setErr(initialError)
@@ -66,9 +65,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                 if (type === 'Tout le monde') data.append('diffusionItems', JSON.stringify(diffusionItems))
                 else data.append('diffusionItems', JSON.stringify((diffusionItems as MultiValue<{ value: string, label: string }>).map((el) => ({ id: el?.value, name: el?.label }))))
 
-                dispatch(addInformation(
-                    data, setAddInformationData, setPreviewImg
-                ))
+                dispatch(addInformation(data, setAddInformationData, setPreviewImg))
             }
         }
     }
@@ -78,10 +75,10 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
             if (typeCible === 'Ville') { dispatch(getAllTowns()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
             else if (typeCible === 'Commune') { dispatch(getAllCommunes()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
             else if (typeCible === 'Quartier') { dispatch(getAllQuarters()); setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
-            else if (typeCible === 'Tout le monde') { setAddInformationData({ ...addInformationData, diffusionItems: [{ id: 'EDM_News', name: 'Tout le monde' }] }) }
+            else if (typeCible === 'Tout le monde') { setAddInformationData({ ...addInformationData, diffusionItems: [{ id: 'Somagep_News', name: 'Tout le monde' }] }) }
 
         } else { setAddInformationData({ ...addInformationData, diffusionItems: [] }) }
-    }, [dispatch, typeCible, addInformationData])
+    }, [dispatch, typeCible])
 
     return (
         !seeAddNewsInformation ? <></> :
@@ -155,7 +152,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                             </div>
 
                             <div className='label_select_multiple_container'>
-                                {typeCible === 'Ville' &&
+                                {addInformationData.type === 'Ville' &&
                                     <>
                                         <label >Ville</label>
                                         {loadingTown ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
@@ -163,6 +160,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                                 options={(allTowns?.map((town: { id: string, name: string }) => ({ value: town?.id, label: town?.name })))}
                                                 onChange={el => { setAddInformationData({ ...addInformationData, diffusionItems: el }) }}
                                                 isMulti
+                                                value={addInformationData.diffusionItems}
                                                 placeholder='Veuillez sélectionner la(es) villes'
                                                 className='select_multiple'
                                                 noOptionsMessage={() => (<span>Aucune autre option</span>)}
@@ -172,7 +170,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                     </>
                                 }
 
-                                {typeCible === 'Commune' &&
+                                {addInformationData.type === 'Commune' &&
                                     <>
                                         <label >Commune</label>
 
@@ -186,10 +184,11 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                                 noOptionsMessage={() => (<span>Aucune autre option</span>)}
                                             />
                                         }
+                                        {err?.diffusionItems && <span className='error'> {err?.diffusionItems as string} </span>}
                                     </>
                                 }
 
-                                {typeCible === 'Quartier' &&
+                                {addInformationData.type === 'Quartier' &&
                                     <>
                                         <label >Quartier</label>
 
@@ -203,6 +202,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
                                                 noOptionsMessage={() => (<span>Aucune autre option</span>)}
                                             />
                                         }
+                                        {err?.diffusionItems && <span className='error'> {err?.diffusionItems as string} </span>}
                                     </>
                                 }
                             </div>
@@ -237,7 +237,7 @@ const AddNewsInformation: PAGE_COMPONENT_TYPE = ({ title, seeAddNewsInformation,
 
                             <div className='save_abort'>
                                 <button disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                                <button type='reset' className='abort' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeAddNewsInformation && setSeeAddNewsInformation(false); setPreviewImg(''); setErr(dataInfo) }}>Annuler</button>
+                                <button type='reset' className='abort' disabled={loadingInfo ? true : false} style={{ cursor: loadingInfo ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeAddNewsInformation && setSeeAddNewsInformation(false); setPreviewImg(''); setAddNewsData(data); setAddInformationData(dataInfo); setErr(dataInfo) }}>Annuler</button>
                             </div>
                         </form>
                     }

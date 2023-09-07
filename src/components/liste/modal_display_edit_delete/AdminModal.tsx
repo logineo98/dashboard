@@ -5,11 +5,14 @@ import Loading from '../../loading/Loading'
 import { activeAdminOrUser, deleteAdmin, editAdmin } from '../../../redux/actions/user.actions'
 import { ADD_EDIT_ADMIN_TYPE, COLUMN_DATA_TABLE_TYPE } from '../../../utils/types'
 import { validation_edit_admin } from '../../../utils/validation'
+import Select from 'react-select'
+
 
 // importation icons
 import { RxCross2 } from 'react-icons/rx'
 import { FaUserCircle } from 'react-icons/fa'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { getAllQuarters } from '../../../redux/actions/quarter.actions'
 
 type ADMIN_MODAL_TYPE = {
     type: string,
@@ -19,9 +22,10 @@ type ADMIN_MODAL_TYPE = {
 }
 
 const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete, setSeeModalDisplayEditDelete }) => {
-    const data: ADD_EDIT_ADMIN_TYPE = { id: '', name: '', username: '', email: '', phone: '', password: '', password_confirm: '' }
+    const data: ADD_EDIT_ADMIN_TYPE = { id: '', name: '', username: '', email: '', phone: '', password: '', password_confirm: '', quarterId: '' }
 
     const { loadingUser, admin } = useSelector((state: RootReducerType) => state.user)
+    const { loadingQuarter, allQuaters } = useSelector((state: RootReducerType) => state.quarter)
     const dispatch = useDispatch<any>()
 
     const [editAdminData, setEditAdminData] = useState(data)
@@ -39,13 +43,13 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
         if (error.email !== initialError.email || error.name !== initialError.name || error.password !== initialError.password || error.password_confirm !== initialError.password_confirm || error.phone !== initialError.phone || error.username !== initialError.username) {
             setErr(error)
         } else {
-            const { id, email, name, password, phone, username } = editAdminData
+            const { id, email, name, password, phone, username, quarterId } = editAdminData
             setErr(initialError)
 
             if (!password)
-                dispatch(editAdmin({ id, email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim() }, setSeeModalDisplayEditDelete))
+                dispatch(editAdmin({ id, email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim(), quarterId: (quarterId as { value: string, label: string }).value.trim() }, setSeeModalDisplayEditDelete))
             else
-                dispatch(editAdmin({ id, email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim(), password }, setSeeModalDisplayEditDelete))
+                dispatch(editAdmin({ id, email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim(), password, quarterId: (quarterId as { value: string, label: string }).value.trim() }, setSeeModalDisplayEditDelete))
         }
     }
 
@@ -54,12 +58,16 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
     }
 
     useEffect(() => {
-        setEditAdminData({ id: row ? row.id : '', email: row ? row.email : '', name: row ? row.name : '', phone: row ? row.phone : '', username: row ? row.username : '' })
+        setEditAdminData({ id: row ? row?.id : '', email: row ? row?.email : '', name: row ? row?.name : '', phone: row ? row?.phone : '', username: row ? row?.username : '', quarterId: row ? { value: (row?.quarter as { id: string, name: string })?.id, label: (row?.quarter as { id: string, name: string })?.name } : '' })
     }, [row])
 
     useEffect(() => {
         localStorage.setItem('choose_status', chooseStatus)
     }, [chooseStatus])
+
+    useEffect(() => {
+        dispatch(getAllQuarters())
+    }, [dispatch])
 
     return (
         seeModalDisplayEditDelete ?
@@ -90,17 +98,22 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
 
                                 <div className='information_container'>
                                     <span className='title'>Nom complet</span>
-                                    <span className='value'> {row?.name.length < 23 ? row?.name : row?.name.substring(0, 23) + '...'} </span>
+                                    <span className='value'> {row?.name?.length < 23 ? row?.name : row?.name?.substring(0, 23) + '...'} </span>
                                 </div>
 
                                 <div className='information_container'>
                                     <span className='title'>Email</span>
-                                    <span className='value'> {row?.email.length < 23 ? row?.email : row?.email.substring(0, 23) + '...'} </span>
+                                    <span className='value'> {row?.email?.length < 23 ? row?.email : row?.email?.substring(0, 23) + '...'} </span>
                                 </div>
 
                                 <div className='information_container'>
                                     <span className='title'>Numéro de téléphone</span>
                                     <span className='value'> {row?.phone} </span>
+                                </div>
+
+                                <div className='information_container'>
+                                    <span className='title'>Quartier</span>
+                                    <span className='value'> {(row?.quarter as { id: string, name: string })?.name} </span>
                                 </div>
 
                                 <div className='information_container'>
@@ -118,6 +131,22 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
 
                     {type === 'modifier' &&
                         <form action='' onSubmit={handleSubmit}>
+                            <div className='label_select_multiple_container'>
+                                <label >Quartier</label>
+
+                                {loadingQuarter ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
+                                    <Select
+                                        options={(allQuaters?.map((commune: { id: string, name: string }) => ({ value: commune?.id, label: commune?.name })))}
+                                        onChange={(el) => { setEditAdminData({ ...editAdminData, quarterId: el }) }}
+                                        placeholder='Veuillez sélectionner un quartier'
+                                        className='select_multiple'
+                                        value={editAdminData.quarterId}
+                                        noOptionsMessage={() => (<span>Aucune autre option</span>)}
+                                    />
+                                }
+                                {err?.quarterId && <span className='error'> {err?.quarterId as string} </span>}
+                            </div>
+
                             <div className='input_label_container'>
                                 <label htmlFor='username'>Nom d'utilisateur</label>
                                 <input type='text' name='username' id='username' value={editAdminData.username} onChange={handleChange} />
@@ -134,7 +163,6 @@ const AdminModal: FC<ADMIN_MODAL_TYPE> = ({ type, row, seeModalDisplayEditDelete
                                 <label htmlFor='email'>Email</label>
                                 <input type='text' name='email' id='email' value={editAdminData.email} onChange={handleChange} />
                                 {err?.email && <span className='error'> {err?.email} </span>}
-
                             </div>
 
                             <div className='input_label_container'>

@@ -40,10 +40,10 @@ const Header = () => {
                                 <span className='name'>Administrateurs</span>
                             </Link>
 
-                            <Link to='/' className='icon_name' onClick={() => { localStorage.clear(); window.location.href = '/'; }}>
+                            <p className='icon_name' onClick={() => { localStorage.clear(); window.location.href = '/'; }}>
                                 <MdLogout className='icon' />
                                 <span className='name'>Se deconnecter</span>
-                            </Link>
+                            </p>
                         </div>
                     }
                 </div>

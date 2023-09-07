@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { MultiValue } from "react-select"
+import { MultiValue, SingleValue } from "react-select"
 
 export type FORGET_PASSWORD_TYPE = {
     user: boolean
@@ -27,6 +27,7 @@ export type ADD_EDIT_ADMIN_TYPE = {
     username: string
     email: string
     phone: string
+    quarterId: string | SingleValue<string> | { value: string, label: string }
     password?: string
     password_confirm?: string
 }
@@ -147,8 +148,11 @@ export type COLUMN_DATA_TABLE_TYPE = {
     edition: Date
     expire: Date
     city: { id: string, name: string }
-    // commune: { id: string, name: string }
+    quarter: string | { id: string, name: string }
+    type: string
+    diffusions: [{ id: string, name: string }]
 }
+
 
 export type PAGE_COMPONENT_TYPE = (props: {
     title?: string

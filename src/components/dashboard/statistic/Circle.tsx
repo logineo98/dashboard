@@ -33,18 +33,18 @@ const Circle: PAGE_COMPONENT_TYPE = ({ title }) => {
                 data: title === 'devis' ?
                     [
                         allStats?.devisPayment?.success,
+                        allStats?.devisPayment?.failure,
                         allStats?.devisPayment?.pending,
-                        allStats?.devisPayment?.failure
                     ] : title === 'post_pay' ?
                         [
                             allStats?.postPaidPayment?.success,
+                            allStats?.postPaidPayment?.failure,
                             allStats?.postPaidPayment?.pending,
-                            allStats?.postPaidPayment?.failure
                         ] : title === 'pre_pay' ?
                             [
                                 allStats?.prePaidPayment?.success,
+                                allStats?.prePaidPayment?.failure,
                                 allStats?.prePaidPayment?.pending,
-                                allStats?.prePaidPayment?.failure
                             ] : [],
                 backgroundColor: [
                     'rgb(6, 161, 6, 0.4)',

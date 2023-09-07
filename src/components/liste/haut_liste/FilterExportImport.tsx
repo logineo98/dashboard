@@ -129,7 +129,7 @@ const FilterExportImport: PAGE_COMPONENT_TYPE = ({ title }) => {
     return (
         <div className='filter_import_export_container'>
             <div className='filter_type_close'>
-                {(title !== 'news' && title !== 'information' && title !== 'town' && title !== 'admin') &&
+                {(title !== 'news' && title !== 'information' && title !== 'town' && title !== 'admin' && title !== 'commune' && title !== 'quarter') &&
                     <button className='filter_container' onClick={() => setDisplayFilter(prev => !prev)}>
                         <AiOutlineFilter className='filter_icon' />
                     </button>

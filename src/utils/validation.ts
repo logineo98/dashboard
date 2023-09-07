@@ -3,9 +3,9 @@ import { deleteSeparator } from './functions';
 import { ADD_EDIT_ADMIN_TYPE, ADD_EDIT_COMMUNE_TYPE, ADD_EDIT_NEWS_INFORMATION_TYPE, ADD_EDIT_QUARTER_TYPE, ADD_EDIT_TOWN_TYPE, VALIDATION_DEVIS_TYPE } from './types';
 
 export const validation_add_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
-    const { email, name, password, password_confirm, phone, username } = props
+    const { email, name, password, password_confirm, phone, username, quarterId } = props
 
-    const initialError: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', password: '', password_confirm: '' }
+    const initialError: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', password: '', password_confirm: '', quarterId: '' }
     let error = initialError
 
     if (!name || name.trim() === '') {
@@ -32,6 +32,10 @@ export const validation_add_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
         error = { ...error, phone: 'Format du numéro incorrect.' }
     }
 
+    if (!quarterId || (quarterId as any)?.value.trim() === '') {
+        error = { ...error, quarterId: 'Veuillez sélectionner un quartier.' }
+    }
+
     if (!password || password.trim() === '') {
         error = { ...error, password: 'Veuillez renseigner le champ.' }
     } else if (password.length < 6) {
@@ -50,7 +54,7 @@ export const validation_add_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
 export const validation_edit_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
     const { email, name, password, password_confirm, phone, username } = props
 
-    const initialError: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', password: '', password_confirm: '' }
+    const initialError: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', password: '', password_confirm: '', quarterId: '' }
     let error = initialError
 
     if (!name || name.trim() === '') error = { ...error, name: 'Veuillez renseigner le champ.' }
@@ -92,12 +96,10 @@ export const validation_edit_admin = (props: ADD_EDIT_ADMIN_TYPE) => {
     return { error, initialError }
 }
 
-export const validation_news = (info: boolean, props: ADD_EDIT_NEWS_INFORMATION_TYPE) => {
+export const validation_news_information = (info: boolean, props: ADD_EDIT_NEWS_INFORMATION_TYPE) => {
     const { content, image, title, type, diffusionItems } = props
     const initialError: ADD_EDIT_NEWS_INFORMATION_TYPE = { content: '', image: '', title: '', type: '', diffusionItems: '' }
     let error = initialError
-
-    console.log(props)
 
     if (image) {
         if (typeof image !== 'string') {
@@ -111,9 +113,10 @@ export const validation_news = (info: boolean, props: ADD_EDIT_NEWS_INFORMATION_
 
     if (info) {
         if (!type || type.trim() === '') error = { ...error, type: 'Veuillez sélectionner une cible' }
-
-        if (typeof diffusionItems !== 'string') {
-            if (diffusionItems?.length === 0) error = { ...error, diffusionItems: 'Veuillez faire au moins un choix' }
+        else {
+            if (typeof diffusionItems !== 'string') {
+                if (diffusionItems?.length === 0) error = { ...error, diffusionItems: 'Veuillez faire au moins un choix' }
+            }
         }
     }
 

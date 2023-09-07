@@ -83,10 +83,10 @@ const QuarterModal: FC<QUARTER_MODAL_TYPE> = ({ row, seeModalDisplayEditDelete, 
                                     <span className='title'>Associée à la commune</span>
                                     <span className='value'> {(row?.commune as { name: string })?.name} </span>
                                 </div>
-                                <div className='information_container'>
+                                {/* <div className='information_container'>
                                     <span className='title'>Associée à la Ville</span>
                                     <span className='value'> {(row?.commune as { name: string, city: { name: string } })?.city?.name} </span>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     }

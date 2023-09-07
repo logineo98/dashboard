@@ -102,7 +102,7 @@ export const addAdmin = (data: ADD_EDIT_ADMIN_TYPE, setAddAdminData?: React.Disp
 
         toast.success('L\'administrateur a été ajouté avec succès.')
 
-        setAddAdminData && setAddAdminData({ name: '', username: '', email: '', phone: '', password: '', password_confirm: '' })
+        setAddAdminData && setAddAdminData({ name: '', username: '', email: '', phone: '', password: '', password_confirm: '', quarterId: '' })
 
         dispatch({ type: ADD_ADMIN, payload: response.data })
     } catch (error: any) {

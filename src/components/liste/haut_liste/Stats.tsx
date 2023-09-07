@@ -12,7 +12,7 @@ const Stats: PAGE_COMPONENT_TYPE = ({ title }) => {
 
     return (
         <div className='stat_top_data_table_title'>
-            {(title !== 'news' && title !== 'information' && title !== 'town') && <p className='title'>Statistiques</p>}
+            {(title !== 'news' && title !== 'information' && title !== 'town' && title !== 'commune' && title !== 'quarter') && <p className='title'>Statistiques</p>}
 
             {title === 'admin' &&
                 <div className='stat_container'>

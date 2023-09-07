@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
 import { RxCross2 } from 'react-icons/rx'
@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addAdmin } from '../../redux/actions/user.actions'
 import { RootReducerType } from '../../redux/store'
 import Loading from '../loading/Loading'
+import Select from 'react-select'
+import { getAllQuarters } from '../../redux/actions/quarter.actions'
 
 const AddAdmin: PAGE_COMPONENT_TYPE = ({ seeAdminAdmin, setSeeAdminAdmin }) => {
 
-    const data: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', password: '', password_confirm: '' }
+    const data: ADD_EDIT_ADMIN_TYPE = { name: '', username: '', email: '', phone: '', quarterId: '', password: '', password_confirm: '' }
 
     const [seePassword, setSeePassword] = useState(false)
     const [seePasswordConfirm, setSeePasswordConfirm] = useState(false)
@@ -19,6 +21,7 @@ const AddAdmin: PAGE_COMPONENT_TYPE = ({ seeAdminAdmin, setSeeAdminAdmin }) => {
     const [err, setErr] = useState<ADD_EDIT_ADMIN_TYPE>()
 
     const { loadingUser } = useSelector((state: RootReducerType) => state.user)
+    const { loadingQuarter, allQuaters } = useSelector((state: RootReducerType) => state.quarter)
     const dispatch = useDispatch<any>()
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,18 +29,22 @@ const AddAdmin: PAGE_COMPONENT_TYPE = ({ seeAdminAdmin, setSeeAdminAdmin }) => {
 
         const { error, initialError } = validation_add_admin(addAdminData)
 
-        if (error.email !== initialError.email || error.name !== initialError.name || error.password !== initialError.password || error.password_confirm !== initialError.password_confirm || error.phone !== initialError.phone || error.username !== initialError.username) {
+        if (error.email !== initialError.email || error.name !== initialError.name || error.password !== initialError.password || error.password_confirm !== initialError.password_confirm || error.phone !== initialError.phone || error.username !== initialError.username || (error.quarterId as any)?.value !== (initialError.quarterId as any)?.value) {
             setErr(error)
         } else {
-            const { email, name, password, phone, username } = addAdminData
+            const { email, name, password, phone, username, quarterId } = addAdminData
             setErr(initialError)
-            dispatch(addAdmin({ email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim(), password }, setAddAdminData))
+            dispatch(addAdmin({ email: email.trim(), name: name.trim(), phone: phone.trim(), username: username.trim(), quarterId: (quarterId as any)?.value?.trim(), password }, setAddAdminData))
         }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAddAdminData({ ...addAdminData, [e.target.id]: e.target.value })
     }
+
+    useEffect(() => {
+        dispatch(getAllQuarters())
+    }, [dispatch])
 
     return (
         !seeAdminAdmin ? <></> :
@@ -59,6 +66,22 @@ const AddAdmin: PAGE_COMPONENT_TYPE = ({ seeAdminAdmin, setSeeAdminAdmin }) => {
                     </div>
 
                     <form action='' onSubmit={handleSubmit}>
+                        <div className='label_select_multiple_container'>
+                            <label >Quartier</label>
+
+                            {loadingQuarter ? <Loading hide_text padding='0px' mg='0px' h_w={30} /> :
+                                <Select
+                                    options={(allQuaters?.map((commune: { id: string, name: string }) => ({ value: commune?.id, label: commune?.name })))}
+                                    onChange={(el) => { setAddAdminData({ ...addAdminData, quarterId: el }) }}
+                                    placeholder='Veuillez sélectionner un quartier'
+                                    className='select_multiple'
+                                    value={addAdminData.quarterId as string}
+                                    noOptionsMessage={() => (<span>Aucune autre option</span>)}
+                                />
+                            }
+                            {err?.quarterId && <span className='error'> {err?.quarterId as string} </span>}
+                        </div>
+
                         <div className='input_label_container'>
                             <label htmlFor='username'>Nom d'utilisateur</label>
                             <input type='text' name='username' id='username' value={addAdminData.username} onChange={handleChange} />
@@ -105,7 +128,7 @@ const AddAdmin: PAGE_COMPONENT_TYPE = ({ seeAdminAdmin, setSeeAdminAdmin }) => {
 
                         <div className='save_abort'>
                             <button disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }}>Enregistrer</button>
-                            <button type='reset' className='abort' disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeAdminAdmin && setSeeAdminAdmin(false); setErr(data) }}>Annuler</button>
+                            <button type='reset' className='abort' disabled={loadingUser ? true : false} style={{ cursor: loadingUser ? 'not-allowed' : 'pointer' }} onClick={() => { setSeeAdminAdmin && setSeeAdminAdmin(false); setAddAdminData(data); setErr(data) }}>Annuler</button>
                         </div>
                     </form>
 

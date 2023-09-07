@@ -1,9 +1,9 @@
 // export const api = 'http://192.168.50.52:8080/api/v1'
-export const api = 'http://192.168.50.50:8080/api/v1'
-export const api_img = 'http://192.168.50.50:9000'
+// export const api = 'http://192.168.50.50:8080/api/v1'
+// export const api_img = 'http://192.168.50.50:9000'
 
-// export const api = 'https://edm.mylogineo.com/api/v1'
-// export const api_img = 'https://edm-files.mylogineo.com'
+export const api = 'https://edm.mylogineo.com/api/v1'
+export const api_img = 'https://edm-files.mylogineo.com'
 
 export const auth = `${api}/auth`
 export const api_user = `${api}/users`
